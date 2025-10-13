@@ -159,7 +159,7 @@ class AuthController extends Controller
      *   "message": "User not found"
      * }
      */
-   public function show(string $id): JsonResponse
+   public function show($id): JsonResponse
     {
         $result = $this->userService->findUser($id);
 
