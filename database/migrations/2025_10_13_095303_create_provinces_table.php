@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('provinces', function (Blueprint $table) {
             $table->id();
              $table->string('name');           // اسم المحافظة
-            $table->foreignId('parent_id')->default(0) ->constrained('provinces')->cascadeOnDelete(); 
+          $table->unsignedBigInteger('parent_id')->default(0);  
 
             $table->timestamps();
         });

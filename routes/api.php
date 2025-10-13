@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProvinceController;
 use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -13,3 +14,9 @@ Route::apiResource('users', AuthController::class)->only(['show']);
 Route::apiResource('allData', AuthController::class);
 
 Route::post('login',[AuthController::class,'login']);
+
+
+
+//-----------------model provinces---------------
+Route::apiResource('provinces', ProvinceController::class);
+

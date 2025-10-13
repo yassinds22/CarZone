@@ -1,0 +1,366 @@
+name: 'Provinces Management'
+description: |-
+
+  APIs for managing provinces in the system.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/provinces
+    metadata:
+      groupName: 'Provinces Management'
+      groupDescription: |-
+
+        APIs for managing provinces in the system.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get a list of all provinces.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": [
+              {
+                "id": 1,
+                "name": "Sana'a",
+                "parent_id": 0,
+                "created_at": "2025-10-13T14:36:35.000000Z",
+                "updated_at": "2025-10-13T14:36:35.000000Z"
+              }
+            ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/provinces
+    metadata:
+      groupName: 'Provinces Management'
+      groupDescription: |-
+
+        APIs for managing provinces in the system.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a new province.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the province.'
+        required: true
+        example: "Sana'a"
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'nullable The ID of the parent province (if any).'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: "Sana'a"
+      parent_id: 1
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "message": "Province created successfully.",
+            "data": {
+                "id": 1,
+                "name": "Sana'a",
+                "parent_id": 0,
+                "created_at": "2025-10-13T14:36:35.000000Z",
+                "updated_at": "2025-10-13T14:36:35.000000Z"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Failed to create province: [error message]"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/provinces/{id}'
+    metadata:
+      groupName: 'Provinces Management'
+      groupDescription: |-
+
+        APIs for managing provinces in the system.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get a specific province by ID.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the province.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+                "id": 1,
+                "name": "Sana'a",
+                "parent_id": 0,
+                "created_at": "2025-10-13T14:36:35.000000Z",
+                "updated_at": "2025-10-13T14:36:35.000000Z"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Province not found."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/provinces/{id}'
+    metadata:
+      groupName: 'Provinces Management'
+      groupDescription: |-
+
+        APIs for managing provinces in the system.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update an existing province.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the province to update.'
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 17
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the province.'
+        required: true
+        example: "Sana'a"
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'nullable The ID of the parent province (if any).'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: "Sana'a"
+      parent_id: 1
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Province updated successfully.",
+            "data": {
+                "id": 1,
+                "name": "Aden",
+                "parent_id": 0,
+                "updated_at": "2025-10-13T17:22:00.000000Z",
+                "created_at": "2025-10-13T14:36:35.000000Z"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Failed to update province: Record not found"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/provinces/{id}'
+    metadata:
+      groupName: 'Provinces Management'
+      groupDescription: |-
+
+        APIs for managing provinces in the system.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete a province by ID.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the province to delete.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Province deleted successfully."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Province not found."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
