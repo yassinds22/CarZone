@@ -12,8 +12,8 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Login a user'
-      description: 'This endpoint allows a user to login either via Google ID or via email & password.'
+      title: 'Register a new user'
+      description: 'This endpoint allows you to register a new user with basic details.'
       authenticated: false
       deprecated: false
       custom: []
@@ -27,18 +27,18 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'The full name of the user. Must not be greater than 255 characters.'
+        description: "The user's full name."
         required: true
         example: 'Yassin Ali'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       email:
         name: email
-        description: 'optional A valid email address. Required if google_id is not provided.'
-        required: false
+        description: 'A valid email address.'
+        required: true
         example: yassin@example.com
         type: string
         enumValues: []
@@ -47,8 +47,8 @@ endpoints:
         custom: []
       password:
         name: password
-        description: 'optional A secure password. Required if google_id is not provided.'
-        required: false
+        description: 'A secure password.'
+        required: true
         example: secret123
         type: string
         enumValues: []
@@ -57,7 +57,7 @@ endpoints:
         custom: []
       google_id:
         name: google_id
-        description: "optional The user's Google ID. Required if email/password are not provided."
+        description: "optional The user's Google ID."
         required: false
         example: '1234567890'
         type: string
@@ -67,12 +67,12 @@ endpoints:
         custom: []
       phone:
         name: phone
-        description: 'Optional phone number.'
+        description: "optional The user's phone number."
         required: false
         example: '+967770000000'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
@@ -84,39 +84,16 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
+        status: 201
         content: |-
           {
             "success": true,
-            "message": "Login successful",
-            "token": "1|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            "user": {
-              "id": 13,
-              "name": "Yassin",
-              "email": "yassin@example.com",
-              "phone": "+967770000000",
-              "google_id": "1234567890"
+            "message": "User registered successfully",
+            "data": {
+              "id": 1,
+              "name": "Yassin Ali",
+              "email": "yassin@example.com"
             }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "success": false,
-            "message": "Invalid email or password"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Email and password are required if google_id is not provided."
           }
         headers: []
         description: ''
@@ -136,8 +113,8 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Login a user'
-      description: 'This endpoint allows a user to login either via Google ID or via email & password.'
+      title: 'Register a new user'
+      description: 'This endpoint allows you to register a new user with basic details.'
       authenticated: false
       deprecated: false
       custom: []
@@ -151,18 +128,18 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'The full name of the user. Must not be greater than 255 characters.'
+        description: "The user's full name."
         required: true
         example: 'Yassin Ali'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       email:
         name: email
-        description: 'optional A valid email address. Required if google_id is not provided.'
-        required: false
+        description: 'A valid email address.'
+        required: true
         example: yassin@example.com
         type: string
         enumValues: []
@@ -171,8 +148,8 @@ endpoints:
         custom: []
       password:
         name: password
-        description: 'optional A secure password. Required if google_id is not provided.'
-        required: false
+        description: 'A secure password.'
+        required: true
         example: secret123
         type: string
         enumValues: []
@@ -181,7 +158,7 @@ endpoints:
         custom: []
       google_id:
         name: google_id
-        description: "optional The user's Google ID. Required if email/password are not provided."
+        description: "optional The user's Google ID."
         required: false
         example: '1234567890'
         type: string
@@ -191,12 +168,12 @@ endpoints:
         custom: []
       phone:
         name: phone
-        description: 'Optional phone number.'
+        description: "optional The user's phone number."
         required: false
         example: '+967770000000'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
@@ -208,39 +185,16 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
+        status: 201
         content: |-
           {
             "success": true,
-            "message": "Login successful",
-            "token": "1|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            "user": {
-              "id": 13,
-              "name": "Yassin",
-              "email": "yassin@example.com",
-              "phone": "+967770000000",
-              "google_id": "1234567890"
+            "message": "User registered successfully",
+            "data": {
+              "id": 1,
+              "name": "Yassin Ali",
+              "email": "yassin@example.com"
             }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "success": false,
-            "message": "Invalid email or password"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Email and password are required if google_id is not provided."
           }
         headers: []
         description: ''
@@ -260,8 +214,8 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Login user'
-      description: 'This endpoint allows users to log in using either email/password or Google ID.'
+      title: 'Login a user'
+      description: 'This endpoint allows a user to login via email/password or Google ID.'
       authenticated: false
       deprecated: false
       custom: []
@@ -275,8 +229,8 @@ endpoints:
     bodyParameters:
       email:
         name: email
-        description: "if no google_id The user's email."
-        required: true
+        description: "optional The user's email. Required if google_id not provided."
+        required: false
         example: yassin@example.com
         type: string
         enumValues: []
@@ -285,8 +239,8 @@ endpoints:
         custom: []
       password:
         name: password
-        description: "if no google_id The user's password."
-        required: true
+        description: "optional The user's password. Required if google_id not provided."
+        required: false
         example: secret123
         type: string
         enumValues: []
@@ -295,8 +249,8 @@ endpoints:
         custom: []
       google_id:
         name: google_id
-        description: 'if no email Login with Google ID.'
-        required: true
+        description: "optional The user's Google ID."
+        required: false
         example: '1234567890'
         type: string
         enumValues: []
@@ -315,18 +269,12 @@ endpoints:
           {
             "success": true,
             "message": "Login successful",
-            "token": "1|abcde12345tokenexample",
-            "user": { "id": 1, "name": "Yassin Ali", "email": "yassin@example.com" }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "success": false,
-            "message": "Invalid credentials"
+            "token": "2|hhi7xBRhqLkotdw8PuNZO1oxxZ49N4u8AqhNyw171b208e72",
+            "user": {
+                "id": 1,
+                "name": "Yassin Ali",
+                "email": "yassin@example.com"
+            }
           }
         headers: []
         description: ''

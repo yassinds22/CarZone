@@ -72,13 +72,13 @@
                 </li>
                                     <ul id="tocify-subheader-authentication" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="authentication-POSTapi-auth">
-                                <a href="#authentication-POSTapi-auth">Login a user</a>
+                                <a href="#authentication-POSTapi-auth">Register a new user</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="authentication-POSTapi-allData">
-                                <a href="#authentication-POSTapi-allData">Login a user</a>
+                                <a href="#authentication-POSTapi-allData">Register a new user</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="authentication-POSTapi-login">
-                                <a href="#authentication-POSTapi-login">Login user</a>
+                                <a href="#authentication-POSTapi-login">Login a user</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -93,9 +93,6 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-auth">
                                 <a href="#endpoints-GETapi-auth">Display all users (for testing only)</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-auth--id-">
-                                <a href="#endpoints-GETapi-auth--id-">GET api/auth/{id}</a>
-                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-PUTapi-auth--id-">
                                 <a href="#endpoints-PUTapi-auth--id-">PUT api/auth/{id}</a>
                             </li>
@@ -105,14 +102,27 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-allData">
                                 <a href="#endpoints-GETapi-allData">Display all users (for testing only)</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-allData--id-">
-                                <a href="#endpoints-GETapi-allData--id-">GET api/allData/{id}</a>
-                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-PUTapi-allData--id-">
                                 <a href="#endpoints-PUTapi-allData--id-">PUT api/allData/{id}</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-allData--id-">
                                 <a href="#endpoints-DELETEapi-allData--id-">DELETE api/allData/{id}</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-users" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="users">
+                    <a href="#users">Users</a>
+                </li>
+                                    <ul id="tocify-subheader-users" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="users-GETapi-auth--id-">
+                                <a href="#users-GETapi-auth--id-">Get user by ID</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="users-GETapi-users--id-">
+                                <a href="#users-GETapi-users--id-">Get user by ID</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="users-GETapi-allData--id-">
+                                <a href="#users-GETapi-allData--id-">Get user by ID</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -148,12 +158,12 @@ You can switch the language used with the tabs at the top right (or from the nav
 
     
 
-                                <h2 id="authentication-POSTapi-auth">Login a user</h2>
+                                <h2 id="authentication-POSTapi-auth">Register a new user</h2>
 
 <p>
 </p>
 
-<p>This endpoint allows a user to login either via Google ID or via email &amp; password.</p>
+<p>This endpoint allows you to register a new user with basic details.</p>
 
 <span id="example-requests-POSTapi-auth">
 <blockquote>Example request:</blockquote>
@@ -202,41 +212,18 @@ fetch(url, {
 
 <span id="example-responses-POSTapi-auth">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (201):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Login successful&quot;,
-    &quot;token&quot;: &quot;1|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;,
-    &quot;user&quot;: {
-        &quot;id&quot;: 13,
-        &quot;name&quot;: &quot;Yassin&quot;,
-        &quot;email&quot;: &quot;yassin@example.com&quot;,
-        &quot;phone&quot;: &quot;+967770000000&quot;,
-        &quot;google_id&quot;: &quot;1234567890&quot;
+    &quot;message&quot;: &quot;User registered successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Yassin Ali&quot;,
+        &quot;email&quot;: &quot;yassin@example.com&quot;
     }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Invalid email or password&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Email and password are required if google_id is not provided.&quot;
 }</code>
  </pre>
     </span>
@@ -319,29 +306,29 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Yassin Ali"
                data-component="body">
     <br>
-<p>The full name of the user. Must not be greater than 255 characters. Example: <code>Yassin Ali</code></p>
+<p>The user's full name. Example: <code>Yassin Ali</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth"
                value="yassin@example.com"
                data-component="body">
     <br>
-<p>optional A valid email address. Required if google_id is not provided. Example: <code>yassin@example.com</code></p>
+<p>A valid email address. Example: <code>yassin@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-auth"
                value="secret123"
                data-component="body">
     <br>
-<p>optional A secure password. Required if google_id is not provided. Example: <code>secret123</code></p>
+<p>A secure password. Example: <code>secret123</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>google_id</code></b>&nbsp;&nbsp;
@@ -352,7 +339,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1234567890"
                data-component="body">
     <br>
-<p>optional The user's Google ID. Required if email/password are not provided. Example: <code>1234567890</code></p>
+<p>optional The user's Google ID. Example: <code>1234567890</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
@@ -363,16 +350,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="+967770000000"
                data-component="body">
     <br>
-<p>Optional phone number. Example: <code>+967770000000</code></p>
+<p>optional The user's phone number. Example: <code>+967770000000</code></p>
         </div>
         </form>
 
-                    <h2 id="authentication-POSTapi-allData">Login a user</h2>
+                    <h2 id="authentication-POSTapi-allData">Register a new user</h2>
 
 <p>
 </p>
 
-<p>This endpoint allows a user to login either via Google ID or via email &amp; password.</p>
+<p>This endpoint allows you to register a new user with basic details.</p>
 
 <span id="example-requests-POSTapi-allData">
 <blockquote>Example request:</blockquote>
@@ -421,41 +408,18 @@ fetch(url, {
 
 <span id="example-responses-POSTapi-allData">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (201):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Login successful&quot;,
-    &quot;token&quot;: &quot;1|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;,
-    &quot;user&quot;: {
-        &quot;id&quot;: 13,
-        &quot;name&quot;: &quot;Yassin&quot;,
-        &quot;email&quot;: &quot;yassin@example.com&quot;,
-        &quot;phone&quot;: &quot;+967770000000&quot;,
-        &quot;google_id&quot;: &quot;1234567890&quot;
+    &quot;message&quot;: &quot;User registered successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Yassin Ali&quot;,
+        &quot;email&quot;: &quot;yassin@example.com&quot;
     }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Invalid email or password&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Email and password are required if google_id is not provided.&quot;
 }</code>
  </pre>
     </span>
@@ -538,29 +502,29 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Yassin Ali"
                data-component="body">
     <br>
-<p>The full name of the user. Must not be greater than 255 characters. Example: <code>Yassin Ali</code></p>
+<p>The user's full name. Example: <code>Yassin Ali</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-allData"
                value="yassin@example.com"
                data-component="body">
     <br>
-<p>optional A valid email address. Required if google_id is not provided. Example: <code>yassin@example.com</code></p>
+<p>A valid email address. Example: <code>yassin@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-allData"
                value="secret123"
                data-component="body">
     <br>
-<p>optional A secure password. Required if google_id is not provided. Example: <code>secret123</code></p>
+<p>A secure password. Example: <code>secret123</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>google_id</code></b>&nbsp;&nbsp;
@@ -571,7 +535,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1234567890"
                data-component="body">
     <br>
-<p>optional The user's Google ID. Required if email/password are not provided. Example: <code>1234567890</code></p>
+<p>optional The user's Google ID. Example: <code>1234567890</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
@@ -582,16 +546,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="+967770000000"
                data-component="body">
     <br>
-<p>Optional phone number. Example: <code>+967770000000</code></p>
+<p>optional The user's phone number. Example: <code>+967770000000</code></p>
         </div>
         </form>
 
-                    <h2 id="authentication-POSTapi-login">Login user</h2>
+                    <h2 id="authentication-POSTapi-login">Login a user</h2>
 
 <p>
 </p>
 
-<p>This endpoint allows users to log in using either email/password or Google ID.</p>
+<p>This endpoint allows a user to login via email/password or Google ID.</p>
 
 <span id="example-requests-POSTapi-login">
 <blockquote>Example request:</blockquote>
@@ -643,22 +607,12 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
     &quot;message&quot;: &quot;Login successful&quot;,
-    &quot;token&quot;: &quot;1|abcde12345tokenexample&quot;,
+    &quot;token&quot;: &quot;2|hhi7xBRhqLkotdw8PuNZO1oxxZ49N4u8AqhNyw171b208e72&quot;,
     &quot;user&quot;: {
         &quot;id&quot;: 1,
         &quot;name&quot;: &quot;Yassin Ali&quot;,
         &quot;email&quot;: &quot;yassin@example.com&quot;
     }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Invalid credentials&quot;
 }</code>
  </pre>
     </span>
@@ -735,35 +689,35 @@ You can check the Dev Tools console for debugging information.</code></pre>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
- &nbsp;
+<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-login"
                value="yassin@example.com"
                data-component="body">
     <br>
-<p>if no google_id The user's email. Example: <code>yassin@example.com</code></p>
+<p>optional The user's email. Required if google_id not provided. Example: <code>yassin@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
- &nbsp;
+<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-login"
                value="secret123"
                data-component="body">
     <br>
-<p>if no google_id The user's password. Example: <code>secret123</code></p>
+<p>optional The user's password. Required if google_id not provided. Example: <code>secret123</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>google_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
- &nbsp;
+<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="google_id"                data-endpoint="POSTapi-login"
                value="1234567890"
                data-component="body">
     <br>
-<p>if no email Login with Google ID. Example: <code>1234567890</code></p>
+<p>optional The user's Google ID. Example: <code>1234567890</code></p>
         </div>
         </form>
 
@@ -938,33 +892,12 @@ fetch(url, {
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
+            <pre><code class="language-http">content-type: text/html; charset=UTF-8
+cache-control: no-cache, private
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[
-    {
-        &quot;id&quot;: 13,
-        &quot;name&quot;: &quot;Yassin&quot;,
-        &quot;email&quot;: &quot;ahmed@example.com&quot;,
-        &quot;phone&quot;: &quot;+967770000000&quot;,
-        &quot;google_id&quot;: &quot;goolr00&quot;,
-        &quot;email_verified_at&quot;: null,
-        &quot;created_at&quot;: &quot;2025-10-13T05:42:24.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-10-13T05:42:24.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 14,
-        &quot;name&quot;: &quot;ddd&quot;,
-        &quot;email&quot;: &quot;yassin@example1.com&quot;,
-        &quot;phone&quot;: &quot;+967770000000&quot;,
-        &quot;google_id&quot;: null,
-        &quot;email_verified_at&quot;: null,
-        &quot;created_at&quot;: &quot;2025-10-13T05:56:48.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-10-13T05:56:48.000000Z&quot;
-    }
-]</code>
+<code class="language-json" style="max-height: 300px;"></code>
  </pre>
     </span>
 <span id="execution-results-GETapi-auth" hidden>
@@ -1037,140 +970,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
-
-                    <h2 id="endpoints-GETapi-auth--id-">GET api/auth/{id}</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-auth--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/auth/consequatur" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/auth/consequatur"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-auth--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">content-type: text/html; charset=UTF-8
-cache-control: no-cache, private
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;"></code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-auth--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-auth--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-auth--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-auth--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-auth--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-auth--id-" data-method="GET"
-      data-path="api/auth/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-auth--id-"
-                    onclick="tryItOut('GETapi-auth--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-auth--id-"
-                    onclick="cancelTryOut('GETapi-auth--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-auth--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/auth/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-auth--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-auth--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="GETapi-auth--id-"
-               value="consequatur"
-               data-component="url">
-    <br>
-<p>The ID of the auth. Example: <code>consequatur</code></p>
-            </div>
-                    </form>
 
                     <h2 id="endpoints-PUTapi-auth--id-">PUT api/auth/{id}</h2>
 
@@ -1459,33 +1258,12 @@ fetch(url, {
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
+            <pre><code class="language-http">content-type: text/html; charset=UTF-8
+cache-control: no-cache, private
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[
-    {
-        &quot;id&quot;: 13,
-        &quot;name&quot;: &quot;Yassin&quot;,
-        &quot;email&quot;: &quot;ahmed@example.com&quot;,
-        &quot;phone&quot;: &quot;+967770000000&quot;,
-        &quot;google_id&quot;: &quot;goolr00&quot;,
-        &quot;email_verified_at&quot;: null,
-        &quot;created_at&quot;: &quot;2025-10-13T05:42:24.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-10-13T05:42:24.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 14,
-        &quot;name&quot;: &quot;ddd&quot;,
-        &quot;email&quot;: &quot;yassin@example1.com&quot;,
-        &quot;phone&quot;: &quot;+967770000000&quot;,
-        &quot;google_id&quot;: null,
-        &quot;email_verified_at&quot;: null,
-        &quot;created_at&quot;: &quot;2025-10-13T05:56:48.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-10-13T05:56:48.000000Z&quot;
-    }
-]</code>
+<code class="language-json" style="max-height: 300px;"></code>
  </pre>
     </span>
 <span id="execution-results-GETapi-allData" hidden>
@@ -1558,140 +1336,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
-
-                    <h2 id="endpoints-GETapi-allData--id-">GET api/allData/{id}</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-allData--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/allData/consequatur" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/allData/consequatur"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-allData--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">content-type: text/html; charset=UTF-8
-cache-control: no-cache, private
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;"></code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-allData--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-allData--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-allData--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-allData--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-allData--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-allData--id-" data-method="GET"
-      data-path="api/allData/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-allData--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-allData--id-"
-                    onclick="tryItOut('GETapi-allData--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-allData--id-"
-                    onclick="cancelTryOut('GETapi-allData--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-allData--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/allData/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-allData--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-allData--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="GETapi-allData--id-"
-               value="consequatur"
-               data-component="url">
-    <br>
-<p>The ID of the allDatum. Example: <code>consequatur</code></p>
-            </div>
-                    </form>
 
                     <h2 id="endpoints-PUTapi-allData--id-">PUT api/allData/{id}</h2>
 
@@ -1934,6 +1578,454 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The ID of the allDatum. Example: <code>consequatur</code></p>
+            </div>
+                    </form>
+
+                <h1 id="users">Users</h1>
+
+    
+
+                                <h2 id="users-GETapi-auth--id-">Get user by ID</h2>
+
+<p>
+</p>
+
+<p>This endpoint retrieves detailed information about a specific user by their ID.</p>
+
+<span id="example-requests-GETapi-auth--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/auth/5" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/auth/5"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-auth--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;User retrieved successfully&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 5,
+        &quot;name&quot;: &quot;Yassin Ali&quot;,
+        &quot;email&quot;: &quot;yassin@example.com&quot;,
+        &quot;phone&quot;: &quot;+967770000000&quot;,
+        &quot;created_at&quot;: &quot;2025-10-13T12:45:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-13T12:45:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;User not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-auth--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-auth--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-auth--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-auth--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-auth--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-auth--id-" data-method="GET"
+      data-path="api/auth/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-auth--id-"
+                    onclick="tryItOut('GETapi-auth--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-auth--id-"
+                    onclick="cancelTryOut('GETapi-auth--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-auth--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/auth/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-auth--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-auth--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-auth--id-"
+               value="5"
+               data-component="url">
+    <br>
+<p>The ID of the user. Example: <code>5</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="users-GETapi-users--id-">Get user by ID</h2>
+
+<p>
+</p>
+
+<p>This endpoint retrieves detailed information about a specific user by their ID.</p>
+
+<span id="example-requests-GETapi-users--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/users/5" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/users/5"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-users--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;User retrieved successfully&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 5,
+        &quot;name&quot;: &quot;Yassin Ali&quot;,
+        &quot;email&quot;: &quot;yassin@example.com&quot;,
+        &quot;phone&quot;: &quot;+967770000000&quot;,
+        &quot;created_at&quot;: &quot;2025-10-13T12:45:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-13T12:45:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;User not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-users--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-users--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-users--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-users--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-users--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-users--id-" data-method="GET"
+      data-path="api/users/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-users--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-users--id-"
+                    onclick="tryItOut('GETapi-users--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-users--id-"
+                    onclick="cancelTryOut('GETapi-users--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-users--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/users/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-users--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-users--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-users--id-"
+               value="5"
+               data-component="url">
+    <br>
+<p>The ID of the user. Example: <code>5</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="users-GETapi-allData--id-">Get user by ID</h2>
+
+<p>
+</p>
+
+<p>This endpoint retrieves detailed information about a specific user by their ID.</p>
+
+<span id="example-requests-GETapi-allData--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/allData/5" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/allData/5"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-allData--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;User retrieved successfully&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 5,
+        &quot;name&quot;: &quot;Yassin Ali&quot;,
+        &quot;email&quot;: &quot;yassin@example.com&quot;,
+        &quot;phone&quot;: &quot;+967770000000&quot;,
+        &quot;created_at&quot;: &quot;2025-10-13T12:45:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-13T12:45:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;User not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-allData--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-allData--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-allData--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-allData--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-allData--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-allData--id-" data-method="GET"
+      data-path="api/allData/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-allData--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-allData--id-"
+                    onclick="tryItOut('GETapi-allData--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-allData--id-"
+                    onclick="cancelTryOut('GETapi-allData--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-allData--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/allData/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-allData--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-allData--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-allData--id-"
+               value="5"
+               data-component="url">
+    <br>
+<p>The ID of the user. Example: <code>5</code></p>
             </div>
                     </form>
 

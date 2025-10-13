@@ -29,38 +29,27 @@ class AuthController extends Controller
       
     }
 
-   /**
- * Login a user
+/**
+ * Register a new user
  *
- * This endpoint allows a user to login either via Google ID or via email & password.
+ * This endpoint allows you to register a new user with basic details.
  *
  * @group Authentication
  *
- * @bodyParam email string optional A valid email address. Required if google_id is not provided. Example: yassin@example.com
- * @bodyParam password string optional A secure password. Required if google_id is not provided. Example: secret123
- * @bodyParam google_id string optional The user's Google ID. Required if email/password are not provided. Example: 1234567890
+ * @bodyParam name string required The user's full name. Example: Yassin Ali
+ * @bodyParam email string required A valid email address. Example: yassin@example.com
+ * @bodyParam password string required A secure password. Example: secret123
+ * @bodyParam google_id string optional The user's Google ID. Example: 1234567890
+ * @bodyParam phone string optional The user's phone number. Example: +967770000000
  *
- * @response 200 {
+ * @response 201 {
  *   "success": true,
- *   "message": "Login successful",
- *   "token": "1|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- *   "user": {
- *     "id": 13,
- *     "name": "Yassin",
- *     "email": "yassin@example.com",
- *     "phone": "+967770000000",
- *     "google_id": "1234567890"
+ *   "message": "User registered successfully",
+ *   "data": {
+ *     "id": 1,
+ *     "name": "Yassin Ali",
+ *     "email": "yassin@example.com"
  *   }
- * }
- *
- * @response 401 {
- *   "success": false,
- *   "message": "Invalid email or password"
- * }
- *
- * @response 422 {
- *   "success": false,
- *   "message": "Email and password are required if google_id is not provided."
  * }
  */
     public function store(RegisterUserRequest $request)
@@ -103,27 +92,26 @@ class AuthController extends Controller
     }
 
 
-
 /**
- * Login user
+ * Login a user
  *
- * This endpoint allows users to log in using either email/password or Google ID.
+ * This endpoint allows a user to login via email/password or Google ID.
  *
  * @group Authentication
  *
- * @bodyParam email string required if no google_id The user's email. Example: yassin@example.com
- * @bodyParam password string required if no google_id The user's password. Example: secret123
- * @bodyParam google_id string required if no email Login with Google ID. Example: 1234567890
+ * @bodyParam email string optional The user's email. Required if google_id not provided. Example: yassin@example.com
+ * @bodyParam password string optional The user's password. Required if google_id not provided. Example: secret123
+ * @bodyParam google_id string optional The user's Google ID. Example: 1234567890
  *
  * @response 200 {
  *   "success": true,
  *   "message": "Login successful",
- *   "token": "1|abcde12345tokenexample",
- *   "user": { "id": 1, "name": "Yassin Ali", "email": "yassin@example.com" }
- * }
- * @response 401 {
- *   "success": false,
- *   "message": "Invalid credentials"
+ *   "token": "2|hhi7xBRhqLkotdw8PuNZO1oxxZ49N4u8AqhNyw171b208e72",
+ *   "user": {
+ *       "id": 1,
+ *       "name": "Yassin Ali",
+ *       "email": "yassin@example.com"
+ *   }
  * }
  */
    public function login(Request $request): JsonResponse
@@ -144,8 +132,43 @@ class AuthController extends Controller
         ], $result['status']);
     }
 
+    /**
+     * Get user by ID
+     *
+     * This endpoint retrieves detailed information about a specific user by their ID.
+     *
+     * @group Users
+     *
+     * @urlParam id integer required The ID of the user. Example: 5
+     *
+     * @response 200 {
+     *   "success": true,
+     *   "message": "User retrieved successfully",
+     *   "user": {
+     *     "id": 5,
+     *     "name": "Yassin Ali",
+     *     "email": "yassin@example.com",
+     *     "phone": "+967770000000",
+     *     "created_at": "2025-10-13T12:45:00.000000Z",
+     *     "updated_at": "2025-10-13T12:45:00.000000Z"
+     *   }
+     * }
+     *
+     * @response 404 {
+     *   "success": false,
+     *   "message": "User not found"
+     * }
+     */
+   public function show(string $id): JsonResponse
+    {
+        $result = $this->userService->findUser($id);
 
-    public function show(string $id) {}
+        return response()->json([
+            'success' => $result['success'],
+            'message' => $result['message'] ?? null,
+            'user' => $result['user'] ?? null,
+        ], $result['status']);
+    }
     public function edit(string $id) {}
     public function update(Request $request, string $id) {}
     public function destroy(string $id) {}

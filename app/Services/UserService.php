@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repository\UserRepository;
 use Illuminate\Container\Attributes\Log;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log as FacadesLog;
 
@@ -16,7 +17,7 @@ class UserService{
 
 
 
-        public function find($id){}
+        
     public function store(array $data){
         return $this->userRepository->Storeuser($data);
 
@@ -87,7 +88,34 @@ class UserService{
             ];
         }
     }
+    public function findUser($id): array
+    {
+        try {
+            $user = $this->userRepository->find($id);
+
+            return [
+                'success' => true,
+                'user' => $user,
+                'status' => 200
+            ];
+
+        } catch (ModelNotFoundException $e) {
+            return [
+                'success' => false,
+                'message' => 'User not found',
+                'status' => 404
+            ];
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'message' => 'Failed to retrieve user',
+                'status' => 500
+            ];
+        }
+    }
     public function update($id, array $data){}
     public function delete($id){}
     public function findByEmail($email){}
 }
+
+

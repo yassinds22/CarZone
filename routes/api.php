@@ -9,6 +9,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::apiResource('auth', AuthController::class);
+Route::apiResource('users', AuthController::class)->only(['show']);
 Route::apiResource('allData', AuthController::class);
 
 Route::post('login',[AuthController::class,'login']);

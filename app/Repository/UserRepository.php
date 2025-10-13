@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserRepository{
     public $user;
@@ -15,7 +16,16 @@ class UserRepository{
      public function all(){
 
      }
-    public function find($id){}
+    public function find($id){
+                $user = $this->user->findOrFail($id);
+        
+        if (!$user) {
+            throw new ModelNotFoundException("User not found with ID: {$id}");
+        }
+
+        return $user;
+    
+    }
     public function Storeuser(array $data){
         return $this->user::create($data);
 
