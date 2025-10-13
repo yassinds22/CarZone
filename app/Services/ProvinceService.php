@@ -26,7 +26,9 @@ class ProvinceService{
         return $this->provinceRepository->find($id);
     }
 
-     public function deleteProvinceById($id){
-        return $this->provinceRepository->deleteProvinceById($id);
-    }
+    public function deleteProvinceById($id)
+{
+    return $this->provinceRepository->deleteProvince($id);
+}
+
 }

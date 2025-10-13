@@ -148,34 +148,39 @@ class ProvinceController extends Controller
         }
     }
 
-    /**
-     * Delete a province by ID.
-     *
-     * @urlParam id integer required The ID of the province to delete. Example: 1
-     *
-     * @response 200 {
-     *   "success": true,
-     *   "message": "Province deleted successfully."
-     * }
-     * @response 404 {
-     *   "success": false,
-     *   "message": "Province not found."
-     * }
-     */
-    public function destroy(string $id)
-    {
-        try {
-            $this->provinceService->deleteProvinceById($id);
+ /**
+ * Delete a province by ID.
+ *
+ * @urlParam id integer required The ID of the province to delete. Example: 1
+ *
+ * @response 200 {
+ *   "success": true,
+ *   "message": "Province deleted successfully."
+ * }
+ * @response 404 {
+ *   "success": false,
+ *   "message": "Province not found."
+ * }
+ * @response 500 {
+ *   "success": false,
+ *   "message": "Failed to delete province: [error message]"
+ * }
+ */
+public function destroy($id)
+{
+    try {
+        $this->provinceService->deleteProvinceById($id);
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Province deleted successfully.'
-            ], 200);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to delete province: ' . $e->getMessage()
-            ], 500);
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Province deleted successfully.'
+        ], 200);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to delete province: ' . $e->getMessage()
+        ], 500);
     }
+}
+
 }

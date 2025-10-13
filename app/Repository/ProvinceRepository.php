@@ -34,8 +34,12 @@ class ProvinceRepository{
         return $province->fresh(); // لإرجاع البيانات بعد التحديث مباشرة
     }
 
-    public function deleteProvinceById($id){
-         return $this->province->delete($id);
-    }
+   public function deleteProvince($id)
+{
+    $province =$this->province->findOrFail($id);
+    $province->delete();
+    return true; // ترجع true إذا الحذف تم بنجاح
+}
+
 
 }

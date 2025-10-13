@@ -11,14 +11,40 @@ class BrandService{
         $this->brandRepostory=$brandRepostory;
 
     }
-    public function saveBrand(array $data,$logo){
+     public function getAll(){
+        return $this->brandRepostory->all();
+    }
+    public function saveBrand(array $data,$log){
           $brand=$this->brandRepostory->storeProvince( $data);
-          $this->uploadImage($brand,$logo);
+          $this->uploadImage($brand,$log);
           return $brand;
     }
 
-            protected function uploadImage(Brand $client, $logo)
+ public function updateBrand($id, array $data, $image = null)
 {
+    $brand = $this->brandRepostory->updateBrand($id, $data);
+
+    if ($image) {
+        $brand->addMedia($image)->toMediaCollection('brands');
+    }
+
+    return $brand->fresh(); // تأكد من إعادة الكائن محدثًا مع أي media
+}
+
+     public function getById($id){
+        return $this->brandRepostory->find($id);
+    }
+
+    public function deleteBrandById($id)
+{
+    return $this->brandRepostory->deleteBrand($id);
+}
+
+
+
+
+     protected function uploadImage(Brand $client, $logo=null)
+               {
     if ($client->hasMedia('logo')) {
         $client->clearMediaCollection('logo');
     }

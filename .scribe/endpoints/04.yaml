@@ -1,21 +1,21 @@
-name: 'Provinces Management'
+name: 'Brand Management'
 description: |-
 
-  APIs for managing provinces in the system.
+  APIs for managing brands in the system.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/provinces
+    uri: api/brands
     metadata:
-      groupName: 'Provinces Management'
+      groupName: 'Brand Management'
       groupDescription: |-
 
-        APIs for managing provinces in the system.
+        APIs for managing brands in the system.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get a list of all provinces.'
-      description: ''
+      title: 'Get all brands'
+      description: 'Retrieve a list of all brands.'
       authenticated: false
       deprecated: false
       custom: []
@@ -38,10 +38,14 @@ endpoints:
             "data": [
               {
                 "id": 1,
-                "name": "Sana'a",
-                "parent_id": 0,
+                "name": "Toyota",
                 "created_at": "2025-10-13T14:36:35.000000Z",
-                "updated_at": "2025-10-13T14:36:35.000000Z"
+                "updated_at": "2025-10-13T14:36:35.000000Z",
+                "media": [
+                  {
+                    "url": "http://127.0.0.1:8000/storage/brands/1634567890_image.png"
+                  }
+                ]
               }
             ]
           }
@@ -57,21 +61,21 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/provinces
+    uri: api/brands
     metadata:
-      groupName: 'Provinces Management'
+      groupName: 'Brand Management'
       groupDescription: |-
 
-        APIs for managing provinces in the system.
+        APIs for managing brands in the system.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Create a new province.'
-      description: ''
+      title: 'Store a new brand'
+      description: 'Create a new brand with optional image upload.'
       authenticated: false
       deprecated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
@@ -80,41 +84,56 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'The name of the province.'
+        description: 'The brand name.'
         required: true
-        example: "Sana'a"
+        example: Samsung
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      parent_id:
-        name: parent_id
-        description: 'nullable The ID of the parent province (if any).'
+      is_active:
+        name: is_active
+        description: 'Whether the brand is active (optional).'
         required: false
-        example: 1
-        type: integer
+        example: true
+        type: boolean
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
+      image:
+        name: image
+        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters:
-      name: "Sana'a"
-      parent_id: 1
-    fileParameters: []
+      name: Samsung
+      is_active: true
+    fileParameters:
+      image: null
     responses:
       -
         status: 201
         content: |-
           {
             "success": true,
-            "message": "Province created successfully.",
+            "message": "Brand created successfully.",
             "data": {
-                "id": 1,
-                "name": "Sana'a",
-                "parent_id": 0,
-                "created_at": "2025-10-13T14:36:35.000000Z",
-                "updated_at": "2025-10-13T14:36:35.000000Z"
+              "id": 1,
+              "name": "Toyota",
+              "created_at": "2025-10-13T14:36:35.000000Z",
+              "updated_at": "2025-10-13T14:36:35.000000Z",
+              "media": [
+                {
+                  "url": "http://127.0.0.1:8000/storage/brands/1634567890_image.png"
+                }
+              ]
             }
           }
         headers: []
@@ -125,7 +144,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Failed to create province: [error message]"
+            "message": "Failed to create brand: [error message]"
           }
         headers: []
         description: ''
@@ -139,16 +158,16 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/provinces/{id}'
+    uri: 'api/brands/{id}'
     metadata:
-      groupName: 'Provinces Management'
+      groupName: 'Brand Management'
       groupDescription: |-
 
-        APIs for managing provinces in the system.
+        APIs for managing brands in the system.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get a specific province by ID.'
-      description: ''
+      title: 'Show brand details'
+      description: 'Display a specific brand by ID.'
       authenticated: false
       deprecated: false
       custom: []
@@ -158,16 +177,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the province.'
+        description: 'The ID of the brand.'
         required: true
-        example: 1
+        example: 17
         type: integer
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 17
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -178,24 +197,15 @@ endpoints:
         status: 200
         content: |-
           {
-            "success": true,
-            "data": {
-                "id": 1,
-                "name": "Sana'a",
-                "parent_id": 0,
-                "created_at": "2025-10-13T14:36:35.000000Z",
-                "updated_at": "2025-10-13T14:36:35.000000Z"
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Province not found."
+            "id": 1,
+            "name": "Toyota",
+            "created_at": "2025-10-13T14:36:35.000000Z",
+            "updated_at": "2025-10-13T14:36:35.000000Z",
+            "media": [
+              {
+                "url": "http://127.0.0.1:8000/storage/brands/1634567890_image.png"
+              }
+            ]
           }
         headers: []
         description: ''
@@ -210,26 +220,26 @@ endpoints:
     httpMethods:
       - PUT
       - PATCH
-    uri: 'api/provinces/{id}'
+    uri: 'api/brands/{id}'
     metadata:
-      groupName: 'Provinces Management'
+      groupName: 'Brand Management'
       groupDescription: |-
 
-        APIs for managing provinces in the system.
+        APIs for managing brands in the system.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Update an existing province.'
-      description: ''
+      title: 'Update brand'
+      description: 'Update an existing brand with optional image replacement.'
       authenticated: false
       deprecated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'The ID of the province to update.'
+        description: 'The ID of the brand.'
         required: true
         example: 17
         type: integer
@@ -244,41 +254,56 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'The name of the province.'
+        description: 'The brand name.'
         required: true
-        example: "Sana'a"
+        example: Samsung
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      parent_id:
-        name: parent_id
-        description: 'nullable The ID of the parent province (if any).'
+      is_active:
+        name: is_active
+        description: 'Whether the brand is active (optional).'
         required: false
-        example: 1
-        type: integer
+        example: true
+        type: boolean
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
+      image:
+        name: image
+        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters:
-      name: "Sana'a"
-      parent_id: 1
-    fileParameters: []
+      name: Samsung
+      is_active: true
+    fileParameters:
+      image: null
     responses:
       -
         status: 200
         content: |-
           {
             "success": true,
-            "message": "Province updated successfully.",
+            "message": "Brand updated successfully.",
             "data": {
-                "id": 1,
-                "name": "Aden",
-                "parent_id": 0,
-                "updated_at": "2025-10-13T17:22:00.000000Z",
-                "created_at": "2025-10-13T14:36:35.000000Z"
+              "id": 1,
+              "name": "Toyota Updated",
+              "created_at": "2025-10-13T14:36:35.000000Z",
+              "updated_at": "2025-10-13T17:22:00.000000Z",
+              "media": [
+                {
+                  "url": "http://127.0.0.1:8000/storage/brands/1634567890_new_image.png"
+                }
+              ]
             }
           }
         headers: []
@@ -289,7 +314,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Failed to update province: Record not found"
+            "message": "Failed to update brand: [error message]"
           }
         headers: []
         description: ''
@@ -303,16 +328,16 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/provinces/{id}'
+    uri: 'api/brands/{id}'
     metadata:
-      groupName: 'Provinces Management'
+      groupName: 'Brand Management'
       groupDescription: |-
 
-        APIs for managing provinces in the system.
+        APIs for managing brands in the system.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Delete a province by ID.'
-      description: ''
+      title: 'Delete brand'
+      description: 'Remove a brand by ID.'
       authenticated: false
       deprecated: false
       custom: []
@@ -322,16 +347,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the province to delete.'
+        description: 'The ID of the brand.'
         required: true
-        example: 1
+        example: 17
         type: integer
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 17
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -343,17 +368,7 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Province deleted successfully."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Province not found."
+            "message": "Brand deleted successfully."
           }
         headers: []
         description: ''
@@ -363,7 +378,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Failed to delete province: [error message]"
+            "message": "Failed to delete brand: [error message]"
           }
         headers: []
         description: ''

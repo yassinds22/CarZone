@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProvinceController;
 use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
@@ -20,3 +21,7 @@ Route::post('login',[AuthController::class,'login']);
 //-----------------model provinces---------------
 Route::apiResource('provinces', ProvinceController::class);
 
+
+
+//-----------------model Brand---------------
+Route::apiResource('brands', BrandController::class);

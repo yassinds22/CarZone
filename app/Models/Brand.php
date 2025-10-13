@@ -9,5 +9,6 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Brand extends Model implements HasMedia
 {
      use InteractsWithMedia;
+     protected $fillable=['name'];
     //
 }

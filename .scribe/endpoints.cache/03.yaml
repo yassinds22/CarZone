@@ -360,6 +360,16 @@ endpoints:
         headers: []
         description: ''
         custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Failed to delete province: [error message]"
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth: []
     controller: null
