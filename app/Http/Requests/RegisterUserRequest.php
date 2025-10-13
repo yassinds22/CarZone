@@ -20,11 +20,11 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'      => '',
-            'email'     => '',
-            'password'  => '',
-            'google_id' => '',
-            'phone'     => '',
+            'name'      => 'required|string|max:255',
+            'email'     => 'required|email|unique:users,email',
+            'password'  => 'string|min:6',
+            'google_id' => 'string',
+            'phone'     => 'nullable|string',
         ];
     }
 
@@ -34,14 +34,7 @@ class RegisterUserRequest extends FormRequest
     public function messages(): array
     {
         return [
-            // 'name'      => 'الاسم مطلوب',
-            // 'email.required'     => 'البريد الإلكتروني مطلوب',
-            // 'email.email'        => 'البريد الإلكتروني غير صحيح',
-            // 'email.unique'       => 'البريد الإلكتروني مستخدم مسبقًا',
-            // 'password.required'  => 'كلمة المرور مطلوبة',
-            // 'password.min'       => 'كلمة المرور يجب أن تكون على الأقل 6 أحرف',
-            // 'password.confirmed' => 'تأكيد كلمة المرور غير متطابق',
-            // 'google_id.unique'   => 'هذا الحساب موجود مسبقًا',
+            // يمكنك تفعيل الرسائل إذا أردت
         ];
     }
 
@@ -50,9 +43,37 @@ class RegisterUserRequest extends FormRequest
      */
     protected function prepareForValidation(): void
     {
-        // تنظيف البيانات قبل التحقق
         $this->merge([
             'email' => strtolower($this->email),
         ]);
+    }
+
+    /**
+     * Define body parameters for Scribe API documentation.
+     */
+    public static function bodyParameters(): array
+    {
+        return [
+            'name' => [
+                'description' => 'The full name of the user',
+                'example' => 'Yassin Ali'
+            ],
+            'email' => [
+                'description' => 'User email address',
+                'example' => 'yassin@example.com'
+            ],
+            'password' => [
+                'description' => 'Password for login',
+                'example' => 'secret123'
+            ],
+            'google_id' => [
+                'description' => 'Optional Google account ID',
+                'example' => '1234567890'
+            ],
+            'phone' => [
+                'description' => 'Optional phone number',
+                'example' => '+967770000000'
+            ],
+        ];
     }
 }
