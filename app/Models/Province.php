@@ -26,5 +26,10 @@ class Province extends Model
     {
         return $this->hasMany(Province::class, 'parent_id');
     }
+
+      public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
     //
 }

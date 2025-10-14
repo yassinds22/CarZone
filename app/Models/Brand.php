@@ -10,5 +10,10 @@ class Brand extends Model implements HasMedia
 {
      use InteractsWithMedia;
      protected $fillable=['name'];
+
+       public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
     //
 }

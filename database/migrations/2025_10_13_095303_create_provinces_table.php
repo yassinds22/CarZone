@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
              $table->string('name');           // اسم المحافظة
           $table->unsignedBigInteger('parent_id')->default(0);  
+          $table->softDeletes();
 
             $table->timestamps();
         });

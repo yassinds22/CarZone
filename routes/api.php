@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProvinceController;
 use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
@@ -25,3 +26,10 @@ Route::apiResource('provinces', ProvinceController::class);
 
 //-----------------model Brand---------------
 Route::apiResource('brands', BrandController::class);
+
+
+
+
+//-----------------model Brand---------------
+Route::apiResource('products',ProductController::class);
+
