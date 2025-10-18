@@ -4,11 +4,19 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterUserRequest;
-use App\Models\User;
+
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+
+/**
+ * @group Authenticating Management
+ *
+ * APIs for managing brands in the system.
+ */
+
+
 
 class AuthController extends Controller
 {

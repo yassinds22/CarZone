@@ -66,6 +66,19 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
+                    <ul id="tocify-header-authenticating-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-management">
+                    <a href="#authenticating-management">Authenticating Management</a>
+                </li>
+                                    <ul id="tocify-subheader-authenticating-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authenticating-management-POSTapi-register_by_email">
+                                <a href="#authenticating-management-POSTapi-register_by_email">Register a new user (Email & Password)</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authenticating-management-POSTapi-login">
+                                <a href="#authenticating-management-POSTapi-login">Login a user (Email/Password or Google ID)</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-brand-management" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="brand-management">
                     <a href="#brand-management">Brand Management</a>
@@ -73,19 +86,6 @@
                                     <ul id="tocify-subheader-brand-management" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="brand-management-GETapi-brands">
                                 <a href="#brand-management-GETapi-brands">Get all brands</a>
-                            </li>
-                                                                        </ul>
-                            </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
-                </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-register_by_email">
-                                <a href="#endpoints-POSTapi-register_by_email">Register a new user (Email & Password)</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
-                                <a href="#endpoints-POSTapi-login">Login a user (Email/Password or Google ID)</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -148,145 +148,11 @@ You can switch the language used with the tabs at the top right (or from the nav
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can get your token from the dashboard after logging in and creating an API Token.</p>
 
-        <h1 id="brand-management">Brand Management</h1>
+        <h1 id="authenticating-management">Authenticating Management</h1>
 
     <p>APIs for managing brands in the system.</p>
 
-                                <h2 id="brand-management-GETapi-brands">Get all brands</h2>
-
-<p>
-</p>
-
-<p>Retrieve a list of all brands.</p>
-
-<span id="example-requests-GETapi-brands">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "https://carzone.dev-options.com/api/brands" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "https://carzone.dev-options.com/api/brands"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-brands">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;Toyota&quot;,
-            &quot;created_at&quot;: &quot;2025-10-13T14:36:35.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-10-13T14:36:35.000000Z&quot;,
-            &quot;media&quot;: [
-                {
-                    &quot;url&quot;: &quot;http://127.0.0.1:8000/storage/brands/1634567890_image.png&quot;
-                }
-            ]
-        }
-    ]
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-brands" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-brands"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-brands"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-brands" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-brands">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-brands" data-method="GET"
-      data-path="api/brands"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-brands', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-brands"
-                    onclick="tryItOut('GETapi-brands');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-brands"
-                    onclick="cancelTryOut('GETapi-brands');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-brands"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/brands</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-brands"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-brands"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                <h1 id="endpoints">Endpoints</h1>
-
-    
-
-                                <h2 id="endpoints-POSTapi-register_by_email">Register a new user (Email &amp; Password)</h2>
+                                <h2 id="authenticating-management-POSTapi-register_by_email">Register a new user (Email &amp; Password)</h2>
 
 <p>
 </p>
@@ -482,7 +348,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-login">Login a user (Email/Password or Google ID)</h2>
+                    <h2 id="authenticating-management-POSTapi-login">Login a user (Email/Password or Google ID)</h2>
 
 <p>
 </p>
@@ -637,6 +503,140 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+                <h1 id="brand-management">Brand Management</h1>
+
+    <p>APIs for managing brands in the system.</p>
+
+                                <h2 id="brand-management-GETapi-brands">Get all brands</h2>
+
+<p>
+</p>
+
+<p>Retrieve a list of all brands.</p>
+
+<span id="example-requests-GETapi-brands">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://carzone.dev-options.com/api/brands" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://carzone.dev-options.com/api/brands"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-brands">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Toyota&quot;,
+            &quot;created_at&quot;: &quot;2025-10-13T14:36:35.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-10-13T14:36:35.000000Z&quot;,
+            &quot;media&quot;: [
+                {
+                    &quot;url&quot;: &quot;http://127.0.0.1:8000/storage/brands/1634567890_image.png&quot;
+                }
+            ]
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-brands" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-brands"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-brands"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-brands" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-brands">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-brands" data-method="GET"
+      data-path="api/brands"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-brands', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-brands"
+                    onclick="tryItOut('GETapi-brands');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-brands"
+                    onclick="cancelTryOut('GETapi-brands');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-brands"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/brands</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-brands"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-brands"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
                 <h1 id="products-management">Products Management</h1>
 
     <p>APIs for managing car products (Cars for sale).</p>
@@ -671,10 +671,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "brand_id=1"\
     --form "province_id=2"\
     --form "user_id=consequatur"\
-    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\php879D.tmp" \
-    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\php87AD.tmp" \
-    --form "image1=@C:\Users\yassin\AppData\Local\Temp\php87AE.tmp" \
-    --form "image2=@C:\Users\yassin\AppData\Local\Temp\php87AF.tmp" </code></pre></div>
+    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\phpC014.tmp" \
+    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\phpC025.tmp" \
+    --form "image1=@C:\Users\yassin\AppData\Local\Temp\phpC026.tmp" \
+    --form "image2=@C:\Users\yassin\AppData\Local\Temp\phpC027.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -949,7 +949,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php879D.tmp</code></p>
+<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC014.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_image</code></b>&nbsp;&nbsp;
@@ -960,7 +960,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php87AD.tmp</code></p>
+<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC025.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image1</code></b>&nbsp;&nbsp;
@@ -971,7 +971,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Main image Example: <code>C:\Users\yassin\AppData\Local\Temp\php87AE.tmp</code></p>
+<p>Main image Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC026.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image2</code></b>&nbsp;&nbsp;
@@ -982,7 +982,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional Secondary image Example: <code>C:\Users\yassin\AppData\Local\Temp\php87AF.tmp</code></p>
+<p>optional Secondary image Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC027.tmp</code></p>
         </div>
         </form>
 
@@ -1161,10 +1161,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "brand_id=1"\
     --form "province_id=2"\
     --form "user_id=consequatur"\
-    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\php87C0.tmp" \
-    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\php87C1.tmp" \
-    --form "image1=@C:\Users\yassin\AppData\Local\Temp\php87C2.tmp" \
-    --form "image2=@C:\Users\yassin\AppData\Local\Temp\php87C3.tmp" </code></pre></div>
+    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\phpC037.tmp" \
+    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\phpC038.tmp" \
+    --form "image1=@C:\Users\yassin\AppData\Local\Temp\phpC039.tmp" \
+    --form "image2=@C:\Users\yassin\AppData\Local\Temp\phpC03A.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1470,7 +1470,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php87C0.tmp</code></p>
+<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC037.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_image</code></b>&nbsp;&nbsp;
@@ -1481,7 +1481,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php87C1.tmp</code></p>
+<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC038.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image1</code></b>&nbsp;&nbsp;
@@ -1492,7 +1492,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The new main image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php87C2.tmp</code></p>
+<p>optional The new main image. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC039.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image2</code></b>&nbsp;&nbsp;
@@ -1503,7 +1503,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The new secondary image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php87C3.tmp</code></p>
+<p>optional The new secondary image. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC03A.tmp</code></p>
         </div>
         </form>
 
