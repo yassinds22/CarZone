@@ -7,29 +7,30 @@ use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-Route::apiResource('auth', AuthController::class);
-Route::apiResource('users', AuthController::class)->only(['show']);
-Route::apiResource('allData', AuthController::class);
-
-Route::post('login',[AuthController::class,'login']);
 
 
 
-//-----------------model provinces---------------
+
+// ---------------- Authentication ----------------
+
+// Normal registration (email + password)
+Route::post('register_by_email', [AuthController::class, 'register'])->name('api.register');
+
+// تسجيل مستخدم عبر Google
+Route::post('register/google', [AuthController::class, 'registerWithGoogle'])->name('api.register.google');
+
+// تسجيل دخول (Email/Password أو Google ID)
+Route::post('login', [AuthController::class, 'login'])->name('api.login');
+
+// ---------------- Provinces Management ----------------
 Route::apiResource('provinces', ProvinceController::class);
 
-
-
-//-----------------model Brand---------------
+// ---------------- Brand Management ----------------
 Route::apiResource('brands', BrandController::class);
 
+// ---------------- Products Management ----------------
+//Route::apiResource('products', ProductController::class)->middleware('auth:sanctum');
 
-
-
-//-----------------model Brand---------------
-Route::apiResource('products',ProductController::class);
+Route::post('add_product', [ProductController::class, 'store']) ->middleware('auth:sanctum')->name('products.store');
+Route::apiResource('products', ProductController::class)->except(['store']);
 

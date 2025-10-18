@@ -67,45 +67,32 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Create New Product
-     *
-     * Create a new product with car details and two images.
-     *
-     * @bodyParam title string required The product title. Example: Toyota Corolla
-     * @bodyParam description string required The product description. Example: A reliable and fuel-efficient car.
-     * @bodyParam model_car string required The model name or number. Example: 2024 XLE
-     * @bodyParam price decimal required The price of the product. Example: 25000.00
-     * @bodyParam car_status string required The status of the car. Example: جديدة
-     * @bodyParam engine_number string required Engine type (4, 6, 8). Example: 6
-     * @bodyParam fuel_type string required Fuel type (ديزل، بترول، كهرباء، هجين). Example: بترول
-     * @bodyParam latitude string optional The latitude for map location. Example: 15.3694
-     * @bodyParam longitude string optional The longitude for map location. Example: 44.1910
-     * @bodyParam brand_id integer required The brand ID. Example: 1
-     * @bodyParam province_id integer required The province ID. Example: 2
-     * @bodyParam image1 file required The main car image.
-     * @bodyParam image2 file optional The secondary image for the car.
-     *
-     * @response 201 {
-     *  "success": true,
-     *  "message": "Product created successfully.",
-     *  "data": {
-     *      "id": 1,
-     *      "title": "Toyota Corolla",
-     *      "price": "25000.00",
-     *      "car_status": "جديدة",
-     *      "engine_number": "6",
-     *      "fuel_type": "بترول",
-     *      "image1_url": "http://127.0.0.1:8000/storage/products/1/main.jpg",
-     *      "image2_url": "http://127.0.0.1:8000/storage/products/1/extra.jpg",
-     *      "created_at": "2025-10-13T14:36:35.000000Z"
-     *  }
-     * }
-     * @response 500 {
-     *  "success": false,
-     *  "message": "Failed to create product: [error message]"
-     * }
-     */
+   /**
+ * Create New Product
+ *
+ * @group Products Management
+ * @authenticated
+ *
+ * @bodyParam title string required The product title. Example: Toyota Corolla
+ * @bodyParam description string required The product description. Example: A reliable and fuel-efficient car.
+ * @bodyParam model_car string required The model year or name. Example: 2024 XLE
+ * @bodyParam price decimal required Product price. Example: 25000.00
+ * @bodyParam car_status string required Car condition. Example: جديدة
+ * @bodyParam engine_number string required Engine type. Example: 6
+ * @bodyParam fuel_type string required Fuel type. Example: بترول
+ * @bodyParam latitude string optional Latitude for map location. Example: 15.3694
+ * @bodyParam longitude string optional Longitude for map location. Example: 44.1910
+ * @bodyParam brand_id integer required Brand ID. Example: 1
+ * @bodyParam province_id integer required Province ID. Example: 2
+ * @bodyParam image1 file required Main image
+ * @bodyParam image2 file optional Secondary image
+ *
+ * @response 201 {
+ *  "success": true,
+ *  "message": "Product created successfully.",
+ *  "data": { ... }
+ * }
+ */
     public function store(StoreProductRequest $request)
     {
         try {
@@ -129,45 +116,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Get Single Product
-     *
-     * Retrieve a single product by its ID.
-     *
-     * @urlParam id integer required The ID of the product. Example: 1
-     *
-     * @response 200 {
-     *  "success": true,
-     *  "data": {
-     *      "id": 1,
-     *      "title": "Toyota Corolla",
-     *      "description": "Reliable car",
-     *      "price": "25000.00"
-     *  }
-     * }
-     * @response 404 {
-     *  "success": false,
-     *  "message": "Product not found"
-     * }
-     */
-    public function show(string $id)
-    {
-        try {
-            $product = $this->productService->getById($id);
-            return response()->json([
-                'success' => true,
-                'data' => $product
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Product not found: ' . $e->getMessage()
-            ], 404);
-        }
-    }
-
-    /**
      * Update Product
-     *
+     * @authenticated
      * Update an existing product's details or images.
      *
      * @urlParam id integer required The ID of the product to update. Example: 1
@@ -216,7 +166,7 @@ class ProductController extends Controller
 
     /**
      * Delete Product
-     *
+     * @authenticated
      * Delete a product by its ID.
      *
      * @urlParam id integer required The ID of the product to delete. Example: 1

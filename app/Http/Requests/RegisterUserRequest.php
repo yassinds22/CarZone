@@ -63,7 +63,7 @@ class RegisterUserRequest extends FormRequest
                 'example' => 'yassin@example.com'
             ],
             'password' => [
-                'description' => 'Password for login',
+                'description' => 'Optional Password for login',
                 'example' => 'secret123'
             ],
             'google_id' => [

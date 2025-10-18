@@ -101,31 +101,30 @@ return [
     ],
 
     // How is your API authenticated? This information will be used in the displayed docs, generated examples and response calls.
-    'auth' => [
-        // Set this to true if ANY endpoints in your API use authentication.
-        'enabled' => false,
+   'auth' => [
+    // تفعيل التوثيق لأي endpoint يستخدمه
+    'enabled' => true,
 
-        // Set this to true if your API should be authenticated by default. If so, you must also set `enabled` (above) to true.
-        // You can then use @unauthenticated or @authenticated on individual endpoints to change their status from the default.
-        'default' => false,
+    // لا تجعل التوثيق افتراضي لكل الـ endpoints
+    'default' => false,
 
-        // Where is the auth value meant to be sent in a request?
-        'in' => AuthIn::BEARER->value,
+    // أين يرسل التوكن؟ في هذا المثال نستخدم Bearer Token
+    'in' => AuthIn::BEARER->value,
 
-        // The name of the auth parameter (e.g. token, key, apiKey) or header (e.g. Authorization, Api-Key).
-        'name' => 'key',
+    // اسم الـ header الذي سيحمل التوكن
+    'name' => 'Authorization',
 
-        // The value of the parameter to be used by Scribe to authenticate response calls.
-        // This will NOT be included in the generated documentation. If empty, Scribe will use a random value.
-        'use_value' => env('SCRIBE_AUTH_KEY'),
+    // قيمة توكن افتراضية لاختبار الـ Example Request
+    'use_value' => env('SCRIBE_AUTH_KEY', 'Bearer {YOUR_SANCTUM_TOKEN}'),
 
-        // Placeholder your users will see for the auth parameter in the example requests.
-        // Set this to null if you want Scribe to use a random value as placeholder instead.
-        'placeholder' => '{YOUR_AUTH_KEY}',
+    // النص الظاهر كـ placeholder في الأمثلة
+    'placeholder' => '{YOUR_SANCTUM_TOKEN}',
 
-        // Any extra authentication-related info for your users. Markdown and HTML are supported.
-        'extra_info' => 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.',
-    ],
+    // معلومات إضافية لمستخدم الـ docs
+      'extra_info' => 'You can get your token from the dashboard after logging in and creating an API Token.',
+
+],
+
 
     // Example requests for each endpoint will be shown in each of these languages.
     // Supported options are: bash, javascript, php, python
