@@ -11,9 +11,18 @@ class ProductService {
         $this->productRepository = $productRepository;
     }
 
-    public function getAll() {
-        return $this->productRepository->all();
-    }
+   public function getAll() {
+    $products = $this->productRepository->all();
+
+    // أضف روابط الصور لكل منتج
+    $products->each(function($product) {
+        $product->main_image_url = $product->getFirstMediaUrl('main_image');
+        $product->sub_image_url  = $product->getFirstMediaUrl('sub_image');
+    });
+
+    return $products;
+}
+
 
     public function saveProduct(array $data, $image1 = null, $image2 = null) {
         $product = $this->productRepository->storeProduct($data);
@@ -27,9 +36,20 @@ class ProductService {
         return $product->fresh();
     }
 
-    public function getById($id) {
-        return $this->productRepository->find($id);
+  public function getById($id) {
+    $product = $this->productRepository->find($id);
+
+    if (!$product) {
+        return null;
     }
+
+    // جلب رابط الصورة الرئيسية والصورة الفرعية (إن وجدت)
+    $product->main_image_url = $product->getFirstMediaUrl('main_image');
+    $product->sub_image_url  = $product->getFirstMediaUrl('sub_image');
+
+    return $product;
+}
+
 
     public function deleteProductById($id) {
         return $this->productRepository->deleteProduct($id);

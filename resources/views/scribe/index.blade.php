@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "https://carzone.dev-options.com";
+        var tryItOutBaseUrl = "http://localhost:8000";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -100,6 +100,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="products-management-GETapi-products">
                                 <a href="#products-management-GETapi-products">Get All Products</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="products-management-GETapi-products--id-">
+                                <a href="#products-management-GETapi-products--id-">Show Product</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="products-management-PUTapi-products--id-">
                                 <a href="#products-management-PUTapi-products--id-">Update Product</a>
                             </li>
@@ -127,7 +130,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 18, 2025</li>
+        <li>Last updated: October 20, 2025</li>
     </ul>
 </div>
 
@@ -136,7 +139,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>https://carzone.dev-options.com</code>
+    <strong>Base URL</strong>: <code>http://localhost:8000</code>
 </aside>
 <pre><code>This documentation aims to provide all the information you need to work with our API.
 
@@ -165,7 +168,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://carzone.dev-options.com/api/register_by_email" \
+    "http://localhost:8000/api/register_by_email" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -180,7 +183,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://carzone.dev-options.com/api/register_by_email"
+    "http://localhost:8000/api/register_by_email"
 );
 
 const headers = {
@@ -361,7 +364,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://carzone.dev-options.com/api/login" \
+    "http://localhost:8000/api/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -374,7 +377,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://carzone.dev-options.com/api/login"
+    "http://localhost:8000/api/login"
 );
 
 const headers = {
@@ -520,14 +523,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://carzone.dev-options.com/api/brands" \
+    --get "http://localhost:8000/api/brands" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://carzone.dev-options.com/api/brands"
+    "http://localhost:8000/api/brands"
 );
 
 const headers = {
@@ -655,7 +658,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://carzone.dev-options.com/api/add_product" \
+    "http://localhost:8000/api/add_product" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
@@ -671,15 +674,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "brand_id=1"\
     --form "province_id=2"\
     --form "user_id=consequatur"\
-    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\phpC014.tmp" \
-    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\phpC025.tmp" \
-    --form "image1=@C:\Users\yassin\AppData\Local\Temp\phpC026.tmp" \
-    --form "image2=@C:\Users\yassin\AppData\Local\Temp\phpC027.tmp" </code></pre></div>
+    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\php9C80.tmp" \
+    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\php9C91.tmp" \
+    --form "image1=@C:\Users\yassin\AppData\Local\Temp\php9C92.tmp" \
+    --form "image2=@C:\Users\yassin\AppData\Local\Temp\php9C93.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://carzone.dev-options.com/api/add_product"
+    "http://localhost:8000/api/add_product"
 );
 
 const headers = {
@@ -724,6 +727,16 @@ fetch(url, {
  &quot;success&quot;: true,
  &quot;message&quot;: &quot;Product created successfully.&quot;,
  &quot;data&quot;: { ... }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Failed to create product: [error message]&quot;
 }</code>
  </pre>
     </span>
@@ -949,7 +962,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC014.tmp</code></p>
+<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9C80.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_image</code></b>&nbsp;&nbsp;
@@ -960,7 +973,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC025.tmp</code></p>
+<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9C91.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image1</code></b>&nbsp;&nbsp;
@@ -971,7 +984,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Main image Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC026.tmp</code></p>
+<p>Main image Example: <code>C:\Users\yassin\AppData\Local\Temp\php9C92.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image2</code></b>&nbsp;&nbsp;
@@ -982,7 +995,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional Secondary image Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC027.tmp</code></p>
+<p>optional Secondary image Example: <code>C:\Users\yassin\AppData\Local\Temp\php9C93.tmp</code></p>
         </div>
         </form>
 
@@ -991,7 +1004,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
-<p>Retrieve a list of all products (cars) in the system.</p>
+<p>Retrieve a list of all products (cars) in the system.
+Each product includes main_image_url and sub_image_url for the associated images.</p>
 
 <span id="example-requests-GETapi-products">
 <blockquote>Example request:</blockquote>
@@ -999,14 +1013,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://carzone.dev-options.com/api/products" \
+    --get "http://localhost:8000/api/products" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://carzone.dev-options.com/api/products"
+    "http://localhost:8000/api/products"
 );
 
 const headers = {
@@ -1044,7 +1058,9 @@ fetch(url, {
             &quot;brand_id&quot;: 1,
             &quot;province_id&quot;: 2,
             &quot;created_at&quot;: &quot;2025-10-13T14:36:35.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-10-13T14:36:35.000000Z&quot;
+            &quot;updated_at&quot;: &quot;2025-10-13T14:36:35.000000Z&quot;,
+            &quot;main_image_url&quot;: &quot;http://example.com/storage/products/main_image.jpg&quot;,
+            &quot;sub_image_url&quot;: &quot;http://example.com/storage/products/sub_image.jpg&quot;
         }
     ]
 }</code>
@@ -1131,6 +1147,165 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+                    <h2 id="products-management-GETapi-products--id-">Show Product</h2>
+
+<p>
+</p>
+
+<p>Retrieve a single product by its ID.
+Includes main_image_url and sub_image_url for the associated images.</p>
+
+<span id="example-requests-GETapi-products--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/products/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/products/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-products--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Toyota Corolla&quot;,
+        &quot;description&quot;: &quot;A reliable and efficient car&quot;,
+        &quot;model_car&quot;: &quot;2024&quot;,
+        &quot;price&quot;: &quot;25000.00&quot;,
+        &quot;main_image_url&quot;: &quot;http://example.com/storage/products/main_image.jpg&quot;,
+        &quot;sub_image_url&quot;: &quot;http://example.com/storage/products/sub_image.jpg&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Product not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Failed to fetch product: [error message]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-products--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-products--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-products--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-products--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-products--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-products--id-" data-method="GET"
+      data-path="api/products/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-products--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-products--id-"
+                    onclick="tryItOut('GETapi-products--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-products--id-"
+                    onclick="cancelTryOut('GETapi-products--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-products--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/products/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-products--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-products--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-products--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the product. Example: <code>1</code></p>
+            </div>
+                    </form>
+
                     <h2 id="products-management-PUTapi-products--id-">Update Product</h2>
 
 <p>
@@ -1145,7 +1320,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "https://carzone.dev-options.com/api/products/1" \
+    "http://localhost:8000/api/products/1" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
@@ -1161,15 +1336,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "brand_id=1"\
     --form "province_id=2"\
     --form "user_id=consequatur"\
-    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\phpC037.tmp" \
-    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\phpC038.tmp" \
-    --form "image1=@C:\Users\yassin\AppData\Local\Temp\phpC039.tmp" \
-    --form "image2=@C:\Users\yassin\AppData\Local\Temp\phpC03A.tmp" </code></pre></div>
+    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\php9CA3.tmp" \
+    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\php9CA4.tmp" \
+    --form "image1=@C:\Users\yassin\AppData\Local\Temp\php9CA5.tmp" \
+    --form "image2=@C:\Users\yassin\AppData\Local\Temp\php9CA6.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://carzone.dev-options.com/api/products/1"
+    "http://localhost:8000/api/products/1"
 );
 
 const headers = {
@@ -1470,7 +1645,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC037.tmp</code></p>
+<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9CA3.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_image</code></b>&nbsp;&nbsp;
@@ -1481,7 +1656,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC038.tmp</code></p>
+<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9CA4.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image1</code></b>&nbsp;&nbsp;
@@ -1492,7 +1667,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The new main image. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC039.tmp</code></p>
+<p>optional The new main image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9CA5.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image2</code></b>&nbsp;&nbsp;
@@ -1503,7 +1678,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional The new secondary image. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpC03A.tmp</code></p>
+<p>optional The new secondary image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9CA6.tmp</code></p>
         </div>
         </form>
 
@@ -1521,7 +1696,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "https://carzone.dev-options.com/api/products/1" \
+    "http://localhost:8000/api/products/1" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1529,7 +1704,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://carzone.dev-options.com/api/products/1"
+    "http://localhost:8000/api/products/1"
 );
 
 const headers = {
@@ -1678,14 +1853,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://carzone.dev-options.com/api/provinces" \
+    --get "http://localhost:8000/api/provinces" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://carzone.dev-options.com/api/provinces"
+    "http://localhost:8000/api/provinces"
 );
 
 const headers = {

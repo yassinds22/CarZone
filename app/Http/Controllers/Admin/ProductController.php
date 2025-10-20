@@ -24,6 +24,7 @@ class ProductController extends Controller
      * Get All Products
      *
      * Retrieve a list of all products (cars) in the system.
+     * Each product includes main_image_url and sub_image_url for the associated images.
      *
      * @response 200 {
      *  "success": true,
@@ -42,7 +43,9 @@ class ProductController extends Controller
      *          "brand_id": 1,
      *          "province_id": 2,
      *          "created_at": "2025-10-13T14:36:35.000000Z",
-     *          "updated_at": "2025-10-13T14:36:35.000000Z"
+     *          "updated_at": "2025-10-13T14:36:35.000000Z",
+     *          "main_image_url": "http://example.com/storage/products/main_image.jpg",
+     *          "sub_image_url": "http://example.com/storage/products/sub_image.jpg"
      *      }
      *  ]
      * }
@@ -68,31 +71,35 @@ class ProductController extends Controller
     }
 
    /**
- * Create New Product
- *
- * @group Products Management
- * @authenticated
- *
- * @bodyParam title string required The product title. Example: Toyota Corolla
- * @bodyParam description string required The product description. Example: A reliable and fuel-efficient car.
- * @bodyParam model_car string required The model year or name. Example: 2024 XLE
- * @bodyParam price decimal required Product price. Example: 25000.00
- * @bodyParam car_status string required Car condition. Example: جديدة
- * @bodyParam engine_number string required Engine type. Example: 6
- * @bodyParam fuel_type string required Fuel type. Example: بترول
- * @bodyParam latitude string optional Latitude for map location. Example: 15.3694
- * @bodyParam longitude string optional Longitude for map location. Example: 44.1910
- * @bodyParam brand_id integer required Brand ID. Example: 1
- * @bodyParam province_id integer required Province ID. Example: 2
- * @bodyParam image1 file required Main image
- * @bodyParam image2 file optional Secondary image
- *
- * @response 201 {
- *  "success": true,
- *  "message": "Product created successfully.",
- *  "data": { ... }
- * }
- */
+     * Create New Product
+     *
+     * @group Products Management
+     * @authenticated
+     *
+     * @bodyParam title string required The product title. Example: Toyota Corolla
+     * @bodyParam description string required The product description. Example: A reliable and fuel-efficient car.
+     * @bodyParam model_car string required The model year or name. Example: 2024 XLE
+     * @bodyParam price decimal required Product price. Example: 25000.00
+     * @bodyParam car_status string required Car condition. Example: جديدة
+     * @bodyParam engine_number string required Engine type. Example: 6
+     * @bodyParam fuel_type string required Fuel type. Example: بترول
+     * @bodyParam latitude string optional Latitude for map location. Example: 15.3694
+     * @bodyParam longitude string optional Longitude for map location. Example: 44.1910
+     * @bodyParam brand_id integer required Brand ID. Example: 1
+     * @bodyParam province_id integer required Province ID. Example: 2
+     * @bodyParam image1 file required Main image
+     * @bodyParam image2 file optional Secondary image
+     *
+     * @response 201 {
+     *  "success": true,
+     *  "message": "Product created successfully.",
+     *  "data": { ... }
+     * }
+     * @response 500 {
+     *  "success": false,
+     *  "message": "Failed to create product: [error message]"
+     * }
+     */
     public function store(StoreProductRequest $request)
     {
         try {
@@ -117,7 +124,10 @@ class ProductController extends Controller
 
     /**
      * Update Product
+     *
+     * @group Products Management
      * @authenticated
+     *
      * Update an existing product's details or images.
      *
      * @urlParam id integer required The ID of the product to update. Example: 1
@@ -164,9 +174,70 @@ class ProductController extends Controller
         }
     }
 
+   /**
+     * Show Product
+     *
+     * Retrieve a single product by its ID.
+     * Includes main_image_url and sub_image_url for the associated images.
+     *
+     * @urlParam id integer required The ID of the product. Example: 1
+     *
+     * @response 200 {
+     *  "success": true,
+     *  "data": {
+     *      "id": 1,
+     *      "title": "Toyota Corolla",
+     *      "description": "A reliable and efficient car",
+     *      "model_car": "2024",
+     *      "price": "25000.00",
+     *      "main_image_url": "http://example.com/storage/products/main_image.jpg",
+     *      "sub_image_url": "http://example.com/storage/products/sub_image.jpg"
+     *  }
+     * }
+     * @response 404 {
+     *  "success": false,
+     *  "message": "Product not found"
+     * }
+     * @response 500 {
+     *  "success": false,
+     *  "message": "Failed to fetch product: [error message]"
+     * }
+     */
+    public function show($id)
+    {
+        try {
+            $product = $this->productService->getById($id);
+
+            if (!$product) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Product not found'
+                ], 404);
+            }
+
+            // إضافة روابط الصور مباشرة
+            $product->main_image_url = $product->getFirstMediaUrl('main_image');
+            $product->sub_image_url  = $product->getFirstMediaUrl('sub_image');
+
+            return response()->json([
+                'success' => true,
+                'data' => $product
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to fetch product: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
     /**
      * Delete Product
+     *
+     * @group Products Management
      * @authenticated
+     *
      * Delete a product by its ID.
      *
      * @urlParam id integer required The ID of the product to delete. Example: 1
