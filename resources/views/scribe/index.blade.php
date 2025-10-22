@@ -94,20 +94,20 @@
                     <a href="#products-management">Products Management</a>
                 </li>
                                     <ul id="tocify-subheader-products-management" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="products-management-POSTapi-add_product">
-                                <a href="#products-management-POSTapi-add_product">Create New Product</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="products-management-GETapi-products">
-                                <a href="#products-management-GETapi-products">Get All Products</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="products-management-GETapi-products--id-">
-                                <a href="#products-management-GETapi-products--id-">Show Product</a>
+                                                    <li class="tocify-item level-2" data-unique="products-management-POSTapi-products">
+                                <a href="#products-management-POSTapi-products">Create New Product</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="products-management-PUTapi-products--id-">
                                 <a href="#products-management-PUTapi-products--id-">Update Product</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="products-management-DELETEapi-products--id-">
                                 <a href="#products-management-DELETEapi-products--id-">Delete Product</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="products-management-GETapi-products">
+                                <a href="#products-management-GETapi-products">Get All Products</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="products-management-GETapi-products--id-">
+                                <a href="#products-management-GETapi-products--id-">Show Product</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -130,7 +130,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 20, 2025</li>
+        <li>Last updated: October 22, 2025</li>
     </ul>
 </div>
 
@@ -644,7 +644,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
     <p>APIs for managing car products (Cars for sale).</p>
 
-                                <h2 id="products-management-POSTapi-add_product">Create New Product</h2>
+                                <h2 id="products-management-POSTapi-products">Create New Product</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -652,13 +652,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 
 
-<span id="example-requests-POSTapi-add_product">
+<span id="example-requests-POSTapi-products">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/add_product" \
+    "http://localhost:8000/api/products" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
@@ -674,15 +674,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "brand_id=1"\
     --form "province_id=2"\
     --form "user_id=consequatur"\
-    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\php9C80.tmp" \
-    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\php9C91.tmp" \
-    --form "image1=@C:\Users\yassin\AppData\Local\Temp\php9C92.tmp" \
-    --form "image2=@C:\Users\yassin\AppData\Local\Temp\php9C93.tmp" </code></pre></div>
+    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\phpFC49.tmp" \
+    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\phpFCA8.tmp" \
+    --form "image1=@C:\Users\yassin\AppData\Local\Temp\phpFCA9.tmp" \
+    --form "image2=@C:\Users\yassin\AppData\Local\Temp\phpFCAA.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/add_product"
+    "http://localhost:8000/api/products"
 );
 
 const headers = {
@@ -717,7 +717,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-add_product">
+<span id="example-responses-POSTapi-products">
             <blockquote>
             <p>Example response (201):</p>
         </blockquote>
@@ -740,43 +740,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-POSTapi-add_product" hidden>
+<span id="execution-results-POSTapi-products" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-add_product"></span>:
+                id="execution-response-status-POSTapi-products"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-add_product"
+    <pre class="json"><code id="execution-response-content-POSTapi-products"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-add_product" hidden>
+<span id="execution-error-POSTapi-products" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-add_product">
+    <pre><code id="execution-error-message-POSTapi-products">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-add_product" data-method="POST"
-      data-path="api/add_product"
+<form id="form-POSTapi-products" data-method="POST"
+      data-path="api/products"
       data-authed="1"
       data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-add_product', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-products', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-add_product"
-                    onclick="tryItOut('POSTapi-add_product');">Try it out ⚡
+                    id="btn-tryout-POSTapi-products"
+                    onclick="tryItOut('POSTapi-products');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-add_product"
-                    onclick="cancelTryOut('POSTapi-add_product');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-products"
+                    onclick="cancelTryOut('POSTapi-products');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-add_product"
+                    id="btn-executetryout-POSTapi-products"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -784,7 +784,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/add_product</code></b>
+            <b><code>api/products</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -792,7 +792,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-add_product"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-products"
                value="Bearer {YOUR_SANCTUM_TOKEN}"
                data-component="header">
     <br>
@@ -803,7 +803,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-add_product"
+                              name="Content-Type"                data-endpoint="POSTapi-products"
                value="multipart/form-data"
                data-component="header">
     <br>
@@ -814,7 +814,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-add_product"
+                              name="Accept"                data-endpoint="POSTapi-products"
                value="application/json"
                data-component="header">
     <br>
@@ -826,7 +826,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="title"                data-endpoint="POSTapi-add_product"
+                              name="title"                data-endpoint="POSTapi-products"
                value="Toyota Corolla"
                data-component="body">
     <br>
@@ -837,7 +837,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="description"                data-endpoint="POSTapi-add_product"
+                              name="description"                data-endpoint="POSTapi-products"
                value="A reliable and fuel-efficient car."
                data-component="body">
     <br>
@@ -848,7 +848,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="model_car"                data-endpoint="POSTapi-add_product"
+                              name="model_car"                data-endpoint="POSTapi-products"
                value="2024 XLE"
                data-component="body">
     <br>
@@ -859,7 +859,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>decimal</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="price"                data-endpoint="POSTapi-add_product"
+                              name="price"                data-endpoint="POSTapi-products"
                value="25000.00"
                data-component="body">
     <br>
@@ -870,7 +870,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="car_status"                data-endpoint="POSTapi-add_product"
+                              name="car_status"                data-endpoint="POSTapi-products"
                value="جديدة"
                data-component="body">
     <br>
@@ -881,7 +881,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="engine_number"                data-endpoint="POSTapi-add_product"
+                              name="engine_number"                data-endpoint="POSTapi-products"
                value="6"
                data-component="body">
     <br>
@@ -892,7 +892,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="fuel_type"                data-endpoint="POSTapi-add_product"
+                              name="fuel_type"                data-endpoint="POSTapi-products"
                value="بترول"
                data-component="body">
     <br>
@@ -903,7 +903,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="latitude"                data-endpoint="POSTapi-add_product"
+                              name="latitude"                data-endpoint="POSTapi-products"
                value="15.3694"
                data-component="body">
     <br>
@@ -914,7 +914,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="longitude"                data-endpoint="POSTapi-add_product"
+                              name="longitude"                data-endpoint="POSTapi-products"
                value="44.1910"
                data-component="body">
     <br>
@@ -925,7 +925,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="brand_id"                data-endpoint="POSTapi-add_product"
+               step="any"               name="brand_id"                data-endpoint="POSTapi-products"
                value="1"
                data-component="body">
     <br>
@@ -936,7 +936,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="province_id"                data-endpoint="POSTapi-add_product"
+               step="any"               name="province_id"                data-endpoint="POSTapi-products"
                value="2"
                data-component="body">
     <br>
@@ -947,7 +947,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="user_id"                data-endpoint="POSTapi-add_product"
+                              name="user_id"                data-endpoint="POSTapi-products"
                value="consequatur"
                data-component="body">
     <br>
@@ -958,46 +958,572 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="file" style="display: none"
-                              name="main_image"                data-endpoint="POSTapi-add_product"
+                              name="main_image"                data-endpoint="POSTapi-products"
                value=""
                data-component="body">
     <br>
-<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9C80.tmp</code></p>
+<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFC49.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_image</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="file" style="display: none"
-                              name="sub_image"                data-endpoint="POSTapi-add_product"
+                              name="sub_image"                data-endpoint="POSTapi-products"
                value=""
                data-component="body">
     <br>
-<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9C91.tmp</code></p>
+<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCA8.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image1</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
  &nbsp;
                 <input type="file" style="display: none"
-                              name="image1"                data-endpoint="POSTapi-add_product"
+                              name="image1"                data-endpoint="POSTapi-products"
                value=""
                data-component="body">
     <br>
-<p>Main image Example: <code>C:\Users\yassin\AppData\Local\Temp\php9C92.tmp</code></p>
+<p>Main image Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCA9.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image2</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="file" style="display: none"
-                              name="image2"                data-endpoint="POSTapi-add_product"
+                              name="image2"                data-endpoint="POSTapi-products"
                value=""
                data-component="body">
     <br>
-<p>optional Secondary image Example: <code>C:\Users\yassin\AppData\Local\Temp\php9C93.tmp</code></p>
+<p>optional Secondary image Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCAA.tmp</code></p>
         </div>
         </form>
+
+                    <h2 id="products-management-PUTapi-products--id-">Update Product</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTapi-products--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost:8000/api/products/1" \
+    --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "title=Toyota Camry"\
+    --form "description=A reliable and fuel-efficient car with modern features."\
+    --form "model_car=2024 XLE"\
+    --form "price=27000.00"\
+    --form "car_status=جديدة"\
+    --form "engine_number=6"\
+    --form "fuel_type=بترول"\
+    --form "latitude=15.3694"\
+    --form "longitude=44.1910"\
+    --form "brand_id=1"\
+    --form "province_id=2"\
+    --form "user_id=consequatur"\
+    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\phpFCAB.tmp" \
+    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\phpFCAC.tmp" \
+    --form "image1=@C:\Users\yassin\AppData\Local\Temp\phpFCBD.tmp" \
+    --form "image2=@C:\Users\yassin\AppData\Local\Temp\phpFCBE.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/products/1"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_SANCTUM_TOKEN}",
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('title', 'Toyota Camry');
+body.append('description', 'A reliable and fuel-efficient car with modern features.');
+body.append('model_car', '2024 XLE');
+body.append('price', '27000.00');
+body.append('car_status', 'جديدة');
+body.append('engine_number', '6');
+body.append('fuel_type', 'بترول');
+body.append('latitude', '15.3694');
+body.append('longitude', '44.1910');
+body.append('brand_id', '1');
+body.append('province_id', '2');
+body.append('user_id', 'consequatur');
+body.append('main_image', document.querySelector('input[name="main_image"]').files[0]);
+body.append('sub_image', document.querySelector('input[name="sub_image"]').files[0]);
+body.append('image1', document.querySelector('input[name="image1"]').files[0]);
+body.append('image2', document.querySelector('input[name="image2"]').files[0]);
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-products--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Product updated successfully.&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Toyota Camry&quot;,
+        &quot;price&quot;: &quot;27000.00&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-14T10:00:00Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Failed to update product: [error message]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-products--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-products--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-products--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-products--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-products--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-products--id-" data-method="PUT"
+      data-path="api/products/{id}"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-products--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-products--id-"
+                    onclick="tryItOut('PUTapi-products--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-products--id-"
+                    onclick="cancelTryOut('PUTapi-products--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-products--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/products/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-products--id-"
+               value="Bearer {YOUR_SANCTUM_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_SANCTUM_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-products--id-"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-products--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-products--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the product to update. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="PUTapi-products--id-"
+               value="Toyota Camry"
+               data-component="body">
+    <br>
+<p>optional The new title. Example: <code>Toyota Camry</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-products--id-"
+               value="A reliable and fuel-efficient car with modern features."
+               data-component="body">
+    <br>
+<p>The product description. Example: <code>A reliable and fuel-efficient car with modern features.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>model_car</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="model_car"                data-endpoint="PUTapi-products--id-"
+               value="2024 XLE"
+               data-component="body">
+    <br>
+<p>The model name or number. Must not be greater than 255 characters. Example: <code>2024 XLE</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
+<small>decimal</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="price"                data-endpoint="PUTapi-products--id-"
+               value="27000.00"
+               data-component="body">
+    <br>
+<p>optional The new price. Example: <code>27000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>car_status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="car_status"                data-endpoint="PUTapi-products--id-"
+               value="جديدة"
+               data-component="body">
+    <br>
+<p>The status of the car. Example: <code>جديدة</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>engine_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="engine_number"                data-endpoint="PUTapi-products--id-"
+               value="6"
+               data-component="body">
+    <br>
+<p>Engine type (4, 6, 8). Example: <code>6</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fuel_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="fuel_type"                data-endpoint="PUTapi-products--id-"
+               value="بترول"
+               data-component="body">
+    <br>
+<p>Fuel type. Example: <code>بترول</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>latitude</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="latitude"                data-endpoint="PUTapi-products--id-"
+               value="15.3694"
+               data-component="body">
+    <br>
+<p>The latitude for map location. Example: <code>15.3694</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>longitude</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="longitude"                data-endpoint="PUTapi-products--id-"
+               value="44.1910"
+               data-component="body">
+    <br>
+<p>The longitude for map location. Example: <code>44.1910</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>brand_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="brand_id"                data-endpoint="PUTapi-products--id-"
+               value="1"
+               data-component="body">
+    <br>
+<p>The brand ID. The <code>id</code> of an existing record in the brands table. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>province_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="province_id"                data-endpoint="PUTapi-products--id-"
+               value="2"
+               data-component="body">
+    <br>
+<p>The province ID. The <code>id</code> of an existing record in the provinces table. Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="user_id"                data-endpoint="PUTapi-products--id-"
+               value="consequatur"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the users table. Example: <code>consequatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>main_image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="main_image"                data-endpoint="PUTapi-products--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCAB.tmp</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sub_image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="sub_image"                data-endpoint="PUTapi-products--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCAC.tmp</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image1</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="image1"                data-endpoint="PUTapi-products--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>optional The new main image. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCBD.tmp</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image2</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="image2"                data-endpoint="PUTapi-products--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>optional The new secondary image. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCBE.tmp</code></p>
+        </div>
+        </form>
+
+                    <h2 id="products-management-DELETEapi-products--id-">Delete Product</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-products--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost:8000/api/products/1" \
+    --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/products/1"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_SANCTUM_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-products--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Product deleted successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Failed to delete product: [error message]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-products--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-products--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-products--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-products--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-products--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-products--id-" data-method="DELETE"
+      data-path="api/products/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-products--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-products--id-"
+                    onclick="tryItOut('DELETEapi-products--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-products--id-"
+                    onclick="cancelTryOut('DELETEapi-products--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-products--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/products/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-products--id-"
+               value="Bearer {YOUR_SANCTUM_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_SANCTUM_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-products--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-products--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="DELETEapi-products--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the product to delete. Example: <code>1</code></p>
+            </div>
+                    </form>
 
                     <h2 id="products-management-GETapi-products">Get All Products</h2>
 
@@ -1303,536 +1829,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The ID of the product. Example: <code>1</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="products-management-PUTapi-products--id-">Update Product</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-PUTapi-products--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/products/1" \
-    --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
-    --header "Content-Type: multipart/form-data" \
-    --header "Accept: application/json" \
-    --form "title=Toyota Camry"\
-    --form "description=A reliable and fuel-efficient car with modern features."\
-    --form "model_car=2024 XLE"\
-    --form "price=27000.00"\
-    --form "car_status=جديدة"\
-    --form "engine_number=6"\
-    --form "fuel_type=بترول"\
-    --form "latitude=15.3694"\
-    --form "longitude=44.1910"\
-    --form "brand_id=1"\
-    --form "province_id=2"\
-    --form "user_id=consequatur"\
-    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\php9CA3.tmp" \
-    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\php9CA4.tmp" \
-    --form "image1=@C:\Users\yassin\AppData\Local\Temp\php9CA5.tmp" \
-    --form "image2=@C:\Users\yassin\AppData\Local\Temp\php9CA6.tmp" </code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/products/1"
-);
-
-const headers = {
-    "Authorization": "Bearer {YOUR_SANCTUM_TOKEN}",
-    "Content-Type": "multipart/form-data",
-    "Accept": "application/json",
-};
-
-const body = new FormData();
-body.append('title', 'Toyota Camry');
-body.append('description', 'A reliable and fuel-efficient car with modern features.');
-body.append('model_car', '2024 XLE');
-body.append('price', '27000.00');
-body.append('car_status', 'جديدة');
-body.append('engine_number', '6');
-body.append('fuel_type', 'بترول');
-body.append('latitude', '15.3694');
-body.append('longitude', '44.1910');
-body.append('brand_id', '1');
-body.append('province_id', '2');
-body.append('user_id', 'consequatur');
-body.append('main_image', document.querySelector('input[name="main_image"]').files[0]);
-body.append('sub_image', document.querySelector('input[name="sub_image"]').files[0]);
-body.append('image1', document.querySelector('input[name="image1"]').files[0]);
-body.append('image2', document.querySelector('input[name="image2"]').files[0]);
-
-fetch(url, {
-    method: "PUT",
-    headers,
-    body,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-PUTapi-products--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Product updated successfully.&quot;,
-    &quot;data&quot;: {
-        &quot;id&quot;: 1,
-        &quot;title&quot;: &quot;Toyota Camry&quot;,
-        &quot;price&quot;: &quot;27000.00&quot;,
-        &quot;updated_at&quot;: &quot;2025-10-14T10:00:00Z&quot;
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (500):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Failed to update product: [error message]&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PUTapi-products--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTapi-products--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-products--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PUTapi-products--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-products--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PUTapi-products--id-" data-method="PUT"
-      data-path="api/products/{id}"
-      data-authed="1"
-      data-hasfiles="1"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-products--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-products--id-"
-                    onclick="tryItOut('PUTapi-products--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-products--id-"
-                    onclick="cancelTryOut('PUTapi-products--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-products--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/products/{id}</code></b>
-        </p>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/products/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-products--id-"
-               value="Bearer {YOUR_SANCTUM_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_SANCTUM_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-products--id-"
-               value="multipart/form-data"
-               data-component="header">
-    <br>
-<p>Example: <code>multipart/form-data</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-products--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="PUTapi-products--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the product to update. Example: <code>1</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="title"                data-endpoint="PUTapi-products--id-"
-               value="Toyota Camry"
-               data-component="body">
-    <br>
-<p>optional The new title. Example: <code>Toyota Camry</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="description"                data-endpoint="PUTapi-products--id-"
-               value="A reliable and fuel-efficient car with modern features."
-               data-component="body">
-    <br>
-<p>The product description. Example: <code>A reliable and fuel-efficient car with modern features.</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>model_car</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="model_car"                data-endpoint="PUTapi-products--id-"
-               value="2024 XLE"
-               data-component="body">
-    <br>
-<p>The model name or number. Must not be greater than 255 characters. Example: <code>2024 XLE</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
-<small>decimal</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="price"                data-endpoint="PUTapi-products--id-"
-               value="27000.00"
-               data-component="body">
-    <br>
-<p>optional The new price. Example: <code>27000.00</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>car_status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="car_status"                data-endpoint="PUTapi-products--id-"
-               value="جديدة"
-               data-component="body">
-    <br>
-<p>The status of the car. Example: <code>جديدة</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>engine_number</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="engine_number"                data-endpoint="PUTapi-products--id-"
-               value="6"
-               data-component="body">
-    <br>
-<p>Engine type (4, 6, 8). Example: <code>6</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>fuel_type</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="fuel_type"                data-endpoint="PUTapi-products--id-"
-               value="بترول"
-               data-component="body">
-    <br>
-<p>Fuel type. Example: <code>بترول</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>latitude</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="latitude"                data-endpoint="PUTapi-products--id-"
-               value="15.3694"
-               data-component="body">
-    <br>
-<p>The latitude for map location. Example: <code>15.3694</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>longitude</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="longitude"                data-endpoint="PUTapi-products--id-"
-               value="44.1910"
-               data-component="body">
-    <br>
-<p>The longitude for map location. Example: <code>44.1910</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>brand_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="brand_id"                data-endpoint="PUTapi-products--id-"
-               value="1"
-               data-component="body">
-    <br>
-<p>The brand ID. The <code>id</code> of an existing record in the brands table. Example: <code>1</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>province_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="province_id"                data-endpoint="PUTapi-products--id-"
-               value="2"
-               data-component="body">
-    <br>
-<p>The province ID. The <code>id</code> of an existing record in the provinces table. Example: <code>2</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="user_id"                data-endpoint="PUTapi-products--id-"
-               value="consequatur"
-               data-component="body">
-    <br>
-<p>The <code>id</code> of an existing record in the users table. Example: <code>consequatur</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>main_image</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="file" style="display: none"
-                              name="main_image"                data-endpoint="PUTapi-products--id-"
-               value=""
-               data-component="body">
-    <br>
-<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9CA3.tmp</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>sub_image</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="file" style="display: none"
-                              name="sub_image"                data-endpoint="PUTapi-products--id-"
-               value=""
-               data-component="body">
-    <br>
-<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9CA4.tmp</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>image1</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="file" style="display: none"
-                              name="image1"                data-endpoint="PUTapi-products--id-"
-               value=""
-               data-component="body">
-    <br>
-<p>optional The new main image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9CA5.tmp</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>image2</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="file" style="display: none"
-                              name="image2"                data-endpoint="PUTapi-products--id-"
-               value=""
-               data-component="body">
-    <br>
-<p>optional The new secondary image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php9CA6.tmp</code></p>
-        </div>
-        </form>
-
-                    <h2 id="products-management-DELETEapi-products--id-">Delete Product</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-DELETEapi-products--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/products/1" \
-    --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/products/1"
-);
-
-const headers = {
-    "Authorization": "Bearer {YOUR_SANCTUM_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEapi-products--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Product deleted successfully.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (500):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Failed to delete product: [error message]&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-DELETEapi-products--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-products--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-products--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-DELETEapi-products--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-products--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-DELETEapi-products--id-" data-method="DELETE"
-      data-path="api/products/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-products--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-products--id-"
-                    onclick="tryItOut('DELETEapi-products--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-products--id-"
-                    onclick="cancelTryOut('DELETEapi-products--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-products--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/products/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-products--id-"
-               value="Bearer {YOUR_SANCTUM_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_SANCTUM_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-products--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-products--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="DELETEapi-products--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the product to delete. Example: <code>1</code></p>
             </div>
                     </form>
 

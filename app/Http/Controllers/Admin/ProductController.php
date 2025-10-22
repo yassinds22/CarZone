@@ -54,21 +54,49 @@ class ProductController extends Controller
      *  "message": "Failed to fetch products: [error message]"
      * }
      */
-    public function index()
-    {
-        try {
-            $products = $this->productService->getAll();
-            return response()->json([
-                'success' => true,
-                'data' => $products
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to fetch products: ' . $e->getMessage()
-            ], 500);
-        }
+  public function index()
+{
+    try {
+        $products = $this->productService->getAll();
+
+        // نضيف روابط الصور إلى كل منتج
+        $products = $products->map(function ($product) {
+            return [
+                'id' => $product->id,
+                'title' => $product->title,
+                'description' => $product->description,
+                'model' => $product->model,
+                'price' => $product->price,
+                'condition' => $product->condition,
+                'engine_cylinders' => $product->engine_cylinders,
+                'fuel_type' => $product->fuel_type,
+                'latitude' => $product->latitude,
+                'longitude' => $product->longitude,
+                'brand_id' => $product->brand_id,
+                'province_id' => $product->province_id,
+                'user_id' => $product->user_id,
+
+                // روابط الصور من Spatie Media Library
+                'images' => [
+                    'main_image' => $product->getFirstMediaUrl('main_image'),
+                    'sub_image' => $product->getFirstMediaUrl('sub_image'),
+                ],
+            ];
+        });
+
+        return response()->json([
+            'success' => true,
+            'data' => $products,
+        ]);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to fetch products: ' . $e->getMessage(),
+        ], 500);
     }
+}
+
 
    /**
      * Create New Product
@@ -100,27 +128,42 @@ class ProductController extends Controller
      *  "message": "Failed to create product: [error message]"
      * }
      */
-    public function store(StoreProductRequest $request)
-    {
-        try {
-            $product = $this->productService->saveProduct(
-                $request->validated(),
-                $request->file('image1'),
-                $request->file('image2')
-            );
+   public function store(StoreProductRequest $request)
+{
+    try {
+        // إنشاء المنتج وتخزين الصور عبر الـ Service
+        $product = $this->productService->saveProduct(
+            $request->validated(),
+            $request->file('main_image'),
+            $request->file('sub_image')
+        );
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Product created successfully.',
-                'data' => $product
-            ], 201);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to create product: ' . $e->getMessage()
-            ], 500);
-        }
+        // تجهيز روابط الصور من Spatie Media Library
+        $main_image = $product->getFirstMediaUrl('main_image');
+        $sub_image = $product->getFirstMediaUrl('sub_image');
+
+        // إرسال الرد بنجاح
+        return response()->json([
+            'success' => true,
+            'message' => 'Product created successfully.',
+            'data' => [
+                'product' => $product,
+                'images' => [
+                    'main_image' => $main_image,
+                    'sub_image' => $sub_image,
+                ],
+            ],
+        ], 201);
+
+    } catch (\Exception $e) {
+        // التعامل مع أي أخطاء أثناء العملية
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to create product: ' . $e->getMessage(),
+        ], 500);
     }
+}
+
 
     /**
      * Update Product
@@ -151,28 +194,42 @@ class ProductController extends Controller
      *  "message": "Failed to update product: [error message]"
      * }
      */
-    public function update(StoreProductRequest $request, string $id)
-    {
-        try {
-            $product = $this->productService->updateProduct(
-                $id,
-                $request->validated(),
-                $request->file('image1'),
-                $request->file('image2')
-            );
+   public function update(StoreProductRequest $request, string $id)
+{
+    try {
+        // تحديث المنتج
+        $product = $this->productService->updateProduct(
+            $id,
+            $request->validated(),
+            $request->hasFile('main_image') ? $request->file('main_image') : null,
+            $request->hasFile('sub_image') ? $request->file('sub_image') : null
+        );
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Product updated successfully.',
-                'data' => $product
-            ], 200);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to update product: ' . $e->getMessage()
-            ], 500);
-        }
+        // تجهيز روابط الصور من Spatie Media Library
+        $main_image = $product->getFirstMediaUrl('main_image');
+        $sub_image = $product->getFirstMediaUrl('sub_image');
+
+        // إرسال الرد النهائي
+        return response()->json([
+            'success' => true,
+            'message' => 'Product updated successfully.',
+            'data' => [
+                'product' => $product,
+                'images' => [
+                    'main_image' => $main_image ?: null,
+                    'sub_image' => $sub_image ?: null,
+                ],
+            ],
+        ], 200);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to update product: ' . $e->getMessage()
+        ], 500);
     }
+}
+
 
    /**
      * Show Product

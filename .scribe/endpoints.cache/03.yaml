@@ -8,7 +8,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/add_product
+    uri: api/products
     metadata:
       groupName: 'Products Management'
       groupDescription: ''
@@ -239,166 +239,7 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - GET
-    uri: api/products
-    metadata:
-      groupName: 'Products Management'
-      groupDescription: |-
-
-        APIs for managing car products (Cars for sale).
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get All Products'
-      description: |-
-        Retrieve a list of all products (cars) in the system.
-        Each product includes main_image_url and sub_image_url for the associated images.
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-           "success": true,
-           "data": [
-               {
-                   "id": 1,
-                   "title": "Toyota Corolla",
-                   "description": "A reliable and efficient car",
-                   "model_car": "2024",
-                   "price": "25000.00",
-                   "car_status": "جديدة",
-                   "engine_number": "6",
-                   "fuel_type": "بترول",
-                   "latitude": "15.3694",
-                   "longitude": "44.1910",
-                   "brand_id": 1,
-                   "province_id": 2,
-                   "created_at": "2025-10-13T14:36:35.000000Z",
-                   "updated_at": "2025-10-13T14:36:35.000000Z",
-                   "main_image_url": "http://example.com/storage/products/main_image.jpg",
-                   "sub_image_url": "http://example.com/storage/products/sub_image.jpg"
-               }
-           ]
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 500
-        content: |-
-          {
-           "success": false,
-           "message": "Failed to fetch products: [error message]"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/products/{id}'
-    metadata:
-      groupName: 'Products Management'
-      groupDescription: |-
-
-        APIs for managing car products (Cars for sale).
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Show Product'
-      description: |-
-        Retrieve a single product by its ID.
-        Includes main_image_url and sub_image_url for the associated images.
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the product.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-           "success": true,
-           "data": {
-               "id": 1,
-               "title": "Toyota Corolla",
-               "description": "A reliable and efficient car",
-               "model_car": "2024",
-               "price": "25000.00",
-               "main_image_url": "http://example.com/storage/products/main_image.jpg",
-               "sub_image_url": "http://example.com/storage/products/sub_image.jpg"
-           }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-           "success": false,
-           "message": "Product not found"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 500
-        content: |-
-          {
-           "success": false,
-           "message": "Failed to fetch product: [error message]"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
       - PUT
-      - PATCH
     uri: 'api/products/{id}'
     metadata:
       groupName: 'Products Management'
@@ -706,6 +547,164 @@ endpoints:
       - headers
       - Authorization
       - 'Bearer Bearer {YOUR_SANCTUM_TOKEN}'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/products
+    metadata:
+      groupName: 'Products Management'
+      groupDescription: |-
+
+        APIs for managing car products (Cars for sale).
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get All Products'
+      description: |-
+        Retrieve a list of all products (cars) in the system.
+        Each product includes main_image_url and sub_image_url for the associated images.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "success": true,
+           "data": [
+               {
+                   "id": 1,
+                   "title": "Toyota Corolla",
+                   "description": "A reliable and efficient car",
+                   "model_car": "2024",
+                   "price": "25000.00",
+                   "car_status": "جديدة",
+                   "engine_number": "6",
+                   "fuel_type": "بترول",
+                   "latitude": "15.3694",
+                   "longitude": "44.1910",
+                   "brand_id": 1,
+                   "province_id": 2,
+                   "created_at": "2025-10-13T14:36:35.000000Z",
+                   "updated_at": "2025-10-13T14:36:35.000000Z",
+                   "main_image_url": "http://example.com/storage/products/main_image.jpg",
+                   "sub_image_url": "http://example.com/storage/products/sub_image.jpg"
+               }
+           ]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+           "success": false,
+           "message": "Failed to fetch products: [error message]"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/products/{id}'
+    metadata:
+      groupName: 'Products Management'
+      groupDescription: |-
+
+        APIs for managing car products (Cars for sale).
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show Product'
+      description: |-
+        Retrieve a single product by its ID.
+        Includes main_image_url and sub_image_url for the associated images.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the product.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "success": true,
+           "data": {
+               "id": 1,
+               "title": "Toyota Corolla",
+               "description": "A reliable and efficient car",
+               "model_car": "2024",
+               "price": "25000.00",
+               "main_image_url": "http://example.com/storage/products/main_image.jpg",
+               "sub_image_url": "http://example.com/storage/products/sub_image.jpg"
+           }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+           "success": false,
+           "message": "Product not found"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+           "success": false,
+           "message": "Failed to fetch product: [error message]"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
     controller: null
     method: null
     route: null

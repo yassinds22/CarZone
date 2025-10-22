@@ -30,9 +30,9 @@ class ProductService {
         return $product;
     }
 
-    public function updateProduct($id, array $data, $image1 = null, $image2 = null) {
+    public function updateProduct($id, array $data, $main_image = null, $sub_image = null) {
         $product = $this->productRepository->updateProduct($id, $data); // تصحيح: تغيير $brand إلى $product
-        $this->uploadImage($product, $image1, $image2);
+        $this->uploadImage($product, $main_image, $sub_image);
         return $product->fresh();
     }
 

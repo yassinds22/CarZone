@@ -30,7 +30,18 @@ Route::apiResource('brands', BrandController::class);
 
 // ---------------- Products Management ----------------
 //Route::apiResource('products', ProductController::class)->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->group(function () {
+    // إنشاء منتج
+    Route::post('products', [ProductController::class, 'store'])->name('products.store');
 
-Route::post('add_product', [ProductController::class, 'store']) ->middleware('auth:sanctum')->name('products.store');
-Route::apiResource('products', ProductController::class)->except(['store']);
+    // تحديث منتج
+    Route::post('products/{id}', [ProductController::class, 'update'])->name('products.update');
+
+    // حذف منتج
+    Route::delete('products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+});
+
+// عمليات القراءة العامة (عرض المنتجات)
+Route::apiResource('products', ProductController::class)
+    ->only(['index','show']);
 
