@@ -1,4 +1,4 @@
-# CarZone
+# CarZone API
 
 CarZone is a web application built with the Laravel framework.
 
